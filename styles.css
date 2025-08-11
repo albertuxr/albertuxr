@@ -799,6 +799,11 @@ body {
     transform: none;
 }
 
+/* Make checkmark white when SIV button is completed (disabled state) */
+.siv-complete-btn:disabled img {
+    filter: brightness(0) invert(1);
+}
+
 /* ==========================================================================
    Investigator Meeting Sidesheet
    ========================================================================== */
@@ -1250,14 +1255,16 @@ body {
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     max-width: 528px;
+    padding: 0;
 }
 
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .form-label {
@@ -1268,7 +1275,8 @@ body {
     margin-bottom: 4px;
 }
 
-.form-input {
+/* Text input container */
+.form-input-text {
     background: #f7f9f9;
     border: 1px solid #d5dede;
     border-radius: 4px;
@@ -1276,10 +1284,27 @@ body {
     min-height: 40px;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.form-input input,
-.form-input textarea {
+/* Textarea input container */
+.form-input-textarea {
+    background: #f7f9f9;
+    border: 1px solid #d5dede;
+    border-radius: 4px;
+    padding: 12px;
+    min-height: 80px;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+}
+
+/* Common input styles */
+.form-input-text input,
+.form-input-textarea textarea {
     width: 100%;
     background: transparent;
     border: none;
@@ -1289,33 +1314,54 @@ body {
     color: #343a40;
     line-height: 1.55;
     font-family: inherit;
+    box-sizing: border-box;
 }
 
-.form-input textarea {
+/* Textarea specific styles */
+.form-input-textarea textarea {
     resize: vertical;
     min-height: 60px;
     padding: 0;
 }
 
-.form-input input:disabled,
-.form-input textarea:disabled {
+/* Disabled states */
+.form-input-text input:disabled,
+.form-input-textarea textarea:disabled {
     color: #868e96;
     cursor: not-allowed;
 }
 
-.form-input input:focus,
-.form-input textarea:focus {
+/* Focus states */
+.form-input-text input:focus,
+.form-input-textarea textarea:focus {
     color: #343a40;
 }
 
-/* Edit mode styles */
-.sidesheet-container.edit-mode .form-input {
+/* Ensure no double borders */
+.form-input-text input,
+.form-input-textarea textarea {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Edit mode styles for text inputs */
+.sidesheet-container.edit-mode .form-input-text {
     background: #ffffff;
     border-color: #339af0;
 }
 
-.sidesheet-container.edit-mode .form-input input:disabled,
-.sidesheet-container.edit-mode .form-input textarea:disabled {
+.sidesheet-container.edit-mode .form-input-text input:disabled {
+    color: #343a40;
+    cursor: text;
+}
+
+/* Edit mode styles for textarea inputs */
+.sidesheet-container.edit-mode .form-input-textarea {
+    background: #ffffff;
+    border-color: #339af0;
+}
+
+.sidesheet-container.edit-mode .form-input-textarea textarea:disabled {
     color: #343a40;
     cursor: text;
 }
@@ -1323,7 +1369,7 @@ body {
 .button-group {
     display: flex;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .yes-no-button {
@@ -1344,9 +1390,9 @@ body {
 }
 
 .yes-no-button.active {
-    background: #bfc0cb;
-    color: #ffffff;
-    border-color: #bfc0cb;
+    background: #339af0;
+    color: #ffffff !important;
+    border-color: #339af0;
 }
 
 .yes-no-button:hover:not(.active):not(:disabled) {
@@ -1604,6 +1650,11 @@ body {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+}
+
+/* Hide cancel button by default, show only when textarea has content */
+.comment-input:not(:has(.comment-textarea:not(:placeholder-shown))) .comment-btn.secondary {
+    display: none;
 }
 
 .comment-btn {
@@ -2019,6 +2070,13 @@ body {
     color: #9395a8;
 }
 
+/* Red placeholder text for add fields in Point of Contacts */
+#sub-name::placeholder,
+#sub-phone::placeholder,
+#sub-email::placeholder {
+    color: #e03131;
+}
+
 .contact-textarea {
     min-height: 40px;
     line-height: 1.55;
@@ -2027,7 +2085,7 @@ body {
 .vial-team {
     /* background: #f8f8f8;
     border-top: 1px solid #e6ebeb; */
-    margin-top: auto;
+    /* margin-top: auto; */
     padding: 0 16px;
 }
 
@@ -2825,6 +2883,21 @@ body {
     cursor: not-allowed;
 }
 
+/* Green state for completed training buttons */
+.confirm-training-btn.completed {
+    background: #40c057;
+    cursor: not-allowed;
+}
+
+.confirm-training-btn.completed:hover {
+    background: #37b24d;
+}
+
+/* Make checkmark white when confirm training buttons are completed (disabled state) */
+.confirm-training-btn:disabled img {
+    filter: brightness(0) invert(1);
+}
+
 /* Responsive design for portal training sidesheet */
 @media (max-width: 768px) {
     .portal-training-sidesheet-container {
@@ -2984,6 +3057,28 @@ body {
 .confirm-activation-btn:disabled {
     background: #40c057;
     cursor: not-allowed;
+}
+
+/* Green state for completed confirm buttons */
+.confirm-receipt-btn.completed,
+.confirm-activation-btn.completed {
+    background: #40c057;
+    cursor: not-allowed;
+}
+
+.confirm-receipt-btn.completed:hover,
+.confirm-activation-btn.completed:hover {
+    background: #37b24d;
+}
+
+/* Make checkmark white when confirm activation button is completed (disabled state) */
+.confirm-activation-btn:disabled img {
+    filter: brightness(0) invert(1);
+}
+
+/* Make checkmark white when confirm receipt buttons are completed (disabled state) */
+.confirm-receipt-btn:disabled img {
+    filter: brightness(0) invert(1);
 }
 
 /* Responsive design for site activation sidesheet */
