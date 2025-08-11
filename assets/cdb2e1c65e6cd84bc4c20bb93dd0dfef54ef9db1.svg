@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arcticons:everyday-tasks" clip-path="url(#clip0_4658_18796)">
+<path id="Vector" d="M14.424 6.218C14.585 6.79831 14.6666 7.39777 14.6667 8C14.6666 9.48987 14.1676 10.9368 13.2491 12.1099C12.3306 13.2829 11.0456 14.1145 9.59923 14.4719C8.15286 14.8293 6.62846 14.6919 5.2693 14.0817C3.91015 13.4714 2.79458 12.4235 2.10064 11.1051C1.4067 9.78667 1.17438 8.27382 1.44076 6.80795C1.70713 5.34209 2.45686 4.0077 3.57028 3.01774C4.6837 2.02778 6.09664 1.43932 7.5836 1.34626C9.07056 1.2532 10.5458 1.66092 11.774 2.50433" stroke="var(--stroke-0, #343A40)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M4.62433 8.068L7.056 10.5267L14.5027 2.82933" stroke="var(--stroke-0, #343A40)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_4658_18796">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
