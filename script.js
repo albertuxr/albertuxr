@@ -66,18 +66,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Hide all task cards
+        // Check if we're in list view or tabbed view
+        const contentContainer = document.querySelector('.content-container');
+        const isListView = contentContainer.classList.contains('list-view');
+        
+        if (isListView) {
+            // In list view, show all tasks but don't change the filtering
+            // Only return early if this is a tab click, not when switching from list to tabbed view
+            return;
+        }
+        
+        // In tabbed view, apply filtering using inline styles
         taskCards.forEach(card => {
-            card.classList.add('hidden');
-            card.classList.remove('visible');
+            card.style.display = 'none';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
         });
         
         // Show only the selected section tasks
         const targetTasks = document.querySelectorAll(`[data-section="${sectionId}"]`);
         targetTasks.forEach(task => {
             if (task.classList.contains('task-card')) {
-                task.classList.remove('hidden');
-                task.classList.add('visible');
+                task.style.display = 'flex';
+                task.style.opacity = '1';
+                task.style.transform = 'none';
             }
         });
         
@@ -900,6 +912,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with Budget & CTA section active
     filterSection('budget');
     
+    // Add click event listeners to progress tracker items
+    progressItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section');
+            filterSection(sectionId);
+        });
+    });
+    
     // Sidebar toggle functionality
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
@@ -1450,8 +1470,6 @@ function closeSQVOverlay() {
 function toggleLayout() {
     const contentContainer = document.querySelector('.content-container');
     const layoutToggleBtn = document.querySelector('.layout-toggle-btn');
-    const progressTracker = document.querySelector('.progress-tracker');
-    const taskCards = document.querySelector('.task-cards');
     const allTaskCards = document.querySelectorAll('.task-card');
     
     // Toggle the list view class
@@ -1462,7 +1480,7 @@ function toggleLayout() {
         layoutToggleBtn.classList.add('active');
         layoutToggleBtn.querySelector('span').textContent = 'Tab View';
         
-        // Show all task cards in list view
+        // In list view, show all task cards
         allTaskCards.forEach(card => {
             card.style.display = 'flex';
             card.style.opacity = '1';
@@ -1472,20 +1490,31 @@ function toggleLayout() {
         layoutToggleBtn.classList.remove('active');
         layoutToggleBtn.querySelector('span').textContent = 'List View';
         
-        // Reset to tabbed view - show only active section
-        const activeSection = document.querySelector('.progress-item.active').getAttribute('data-section');
-        allTaskCards.forEach(card => {
-            const cardSection = card.getAttribute('data-section');
-            if (cardSection === activeSection) {
-                card.style.display = 'flex';
-                card.style.opacity = '1';
-                card.style.transform = 'none';
-            } else {
+        // In tabbed view, apply the current section filter
+        const activeSection = document.querySelector('.progress-item.active');
+        if (activeSection) {
+            const sectionId = activeSection.getAttribute('data-section');
+            
+            // Force filtering by temporarily removing list-view class, applying filter, then adding it back
+            contentContainer.classList.remove('list-view');
+            
+            // Hide all task cards first
+            allTaskCards.forEach(card => {
                 card.style.display = 'none';
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
-            }
-        });
+            });
+            
+            // Show only the active section tasks
+            const targetTasks = document.querySelectorAll(`[data-section="${sectionId}"]`);
+            targetTasks.forEach(task => {
+                if (task.classList.contains('task-card')) {
+                    task.style.display = 'flex';
+                    task.style.opacity = '1';
+                    task.style.transform = 'none';
+                }
+            });
+        }
     }
 }
 
@@ -1493,19 +1522,14 @@ function toggleLayout() {
 function initializeLayout() {
     const contentContainer = document.querySelector('.content-container');
     const layoutToggleBtn = document.querySelector('.layout-toggle-btn');
-    const allTaskCards = document.querySelectorAll('.task-card');
     
     // Set to list view by default
     contentContainer.classList.add('list-view');
     layoutToggleBtn.classList.add('active');
     layoutToggleBtn.querySelector('span').textContent = 'Tab View';
     
-    // Show all task cards in list view
-    allTaskCards.forEach(card => {
-        card.style.display = 'flex';
-        card.style.opacity = '1';
-        card.style.transform = 'none';
-    });
+    // Don't override the section filtering - let the existing filterSection function handle it
+    // The CSS will handle showing all cards in list view
 }
 
 /**
