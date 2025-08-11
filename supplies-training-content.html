@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplies & Training Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9fbfc;
+            color: #515378;
+            line-height: 1.55;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .action-item {
+            background: #ffffff;
+            border: 1px solid #e6ebeb;
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .action-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            background: #515378;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .action-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #515378;
+        }
+
+        .action-description {
+            font-size: 12px;
+            color: #8b92b9;
+        }
+
+        .progress-badge {
+            background: #e7f5ff;
+            color: #339af0;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 9px;
+        }
+
+        .due-date {
+            background: #f7f9f9;
+            border: 1px solid #eef1f1;
+            border-radius: 35px;
+            padding: 5px 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #868e96;
+        }
+
+        .clock-icon {
+            width: 16px;
+            height: 16px;
+            background: #868e96;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .clock-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 6px;
+            background: #868e96;
+            transform: translate(-50%, -50%);
+            border-radius: 1px;
+        }
+
+        .clock-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 4px;
+            background: #868e96;
+            transform: translate(-50%, -50%) rotate(45deg);
+            border-radius: 0.5px;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #515378;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="section-header">Supplies & Training</h1>
+        
+        <!-- Action Item 1: Confirm supplies received -->
+        <div class="action-item">
+            <div class="action-content">
+                <div class="action-icon">
+                    <!-- Supply box icon representation -->
+                    <div style="width: 20px; height: 20px; background: #ffffff; border-radius: 4px; position: relative;">
+                        <div style="position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #515378; border-radius: 2px;"></div>
+                    </div>
+                </div>
+                <div class="action-text">
+                    <div class="action-title">Confirm supplies received</div>
+                    <div class="action-description">Confirm that supplies were received</div>
+                </div>
+            </div>
+            <div class="due-date">
+                <div class="clock-icon"></div>
+                <span>Due Sep 30, 2024</span>
+            </div>
+        </div>
+
+        <!-- Action Item 2: Confirm Portal Training/Access -->
+        <div class="action-item">
+            <div class="action-content">
+                <div class="action-icon">
+                    <!-- Training/access icon representation -->
+                    <div style="width: 20px; height: 20px; background: #ffffff; border-radius: 4px; position: relative;">
+                        <div style="position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #515378; border-radius: 2px;"></div>
+                        <div style="position: absolute; top: 6px; left: 6px; width: 8px; height: 8px; background: #ffffff; border-radius: 1px;"></div>
+                    </div>
+                </div>
+                <div class="action-text">
+                    <div class="action-title">
+                        Confirm Portal Training/Access
+                        <span class="progress-badge">90%</span>
+                    </div>
+                    <div class="action-description">Confirm if access to portal was granted</div>
+                </div>
+            </div>
+            <div class="due-date">
+                <div class="clock-icon"></div>
+                <span>Due Sep 30, 2024</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

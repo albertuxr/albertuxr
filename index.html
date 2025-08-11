@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Onboarding - Clinical Trial Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <img src="./assets/5841e84510623414aa849b2407ec94129468fdee.svg" alt="Logo" width="17" height="28">
+                    </div>
+                </div>
+                
+                <div class="nav-separator"></div>
+                
+                <div class="nav-items">
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <img src="./assets/fde9efdbdb12f6aa8a49ddfdc88279c57a80a84c.svg" alt="EDC" width="16" height="16">
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <img src="./assets/998190efcabefdbfb00f69fe401b089b60a4ed97.svg" alt="Trials" width="16" height="16">
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item active">
+                        <div class="nav-icon">
+                            <img src="./assets/8288d77c572821ac541a9cbf2e6ece1d07805e86.svg" alt="SSU" width="16" height="16">
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <img src="./assets/e5ef1887d7c980fdaafb2eb0365aa5e2ca1d7173.svg" alt="MP" width="16" height="16">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <header class="top-nav">
+                <div class="breadcrumb">
+                    <div class="breadcrumb-item">
+                        <img src="./assets/781a4c5eee3d9d900bf0ed73c03a347048f486db.svg" alt="Home" width="16" height="16">
+                    </div>
+                    <div class="breadcrumb-separator">
+                        <img src="./assets/e583706497bd9953b308af70a673eff54acdd925.svg" alt="Chevron">
+                    </div>
+                    <div class="breadcrumb-item current" id="breadcrumb-text">Site Start-Up</div>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="select-dropdown">
+                        <div class="select-badge">
+                            <span>Demo Clinic</span>
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <img src="./assets/aa4eb539740608aa375cf91f45b44a3c48414304.svg" alt="Dropdown" width="8" height="8">
+                    </div>
+                    
+                    <div class="search-icon">
+                        <img src="./assets/8380afb072245f0cf59f735c8076182425370fda.svg" alt="Search" width="16" height="16">
+                    </div>
+                    
+                    <div class="action-items">
+                        <img src="./assets/cdb2e1c65e6cd84bc4c20bb93dd0dfef54ef9db1.svg" alt="Action Items" width="16" height="16">
+                        <span>Action Items</span>
+                        <div class="badge">0</div>
+                    </div>
+                    
+                    <div class="avatar">SD</div>
+                </div>
+            </header>
+
+            <!-- Content Container (800px max-width, centered) -->
+            <div class="content-container">
+                <!-- Progress Tracker -->
+                <section class="progress-tracker">
+                    <div class="progress-item" data-section="budget">
+                        <div class="progress-header">
+                            <span class="progress-title">Budget & CTA</span>
+                            <div class="progress-badge">
+                                <span>1/2</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    
+                    <div class="progress-item" data-section="doc-collection">
+                        <div class="progress-header">
+                            <span class="progress-title">Doc Collection</span>
+                            <div class="progress-badge">
+                                <span>0/4</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    
+                    <div class="progress-item active" data-section="site-initiation">
+                        <div class="progress-header">
+                            <span class="progress-title">Site Initiation</span>
+                            <div class="progress-badge active">
+                                <span>0/2</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar active"></div>
+                    </div>
+                    
+                    <div class="progress-item" data-section="supplies-training">
+                        <div class="progress-header">
+                            <span class="progress-title">Supplies & Training</span>
+                            <div class="progress-badge">
+                                <span>0/2</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    
+                    <div class="progress-item" data-section="site-activation">
+                        <div class="progress-header">
+                            <span class="progress-title">Site Activation</span>
+                            <div class="progress-badge">
+                                <span>0/1</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                </section>
+
+                <!-- Task Cards -->
+                <section class="task-cards">
+                    <!-- Budget & CTA Tasks -->
+                    <div class="task-card completed" data-section="budget" data-task="feasibility">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/2ef2bcf95a70a0aa96591a73a643522fd6b20a9a.svg" alt="Task" width="32" height="34">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Feasibility Questionnaire</h3>
+                                <p class="task-description">Fill out the feasibility questionnaire</p>
+                            </div>
+                        </div>
+                        <div class="task-status completed">
+                            <span>Completed</span>
+                            <img src="./assets/8e8269db2fe8c646c1ed0be85c00cd2ee71a1a50.svg" alt="Completed" width="18" height="18">
+                        </div>
+                    </div>
+                    
+                    <div class="task-card pending" data-section="budget" data-task="budget-cta">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/667e3d9f36857ce2e0212ecdbccf6ac42e50cd9e.svg" alt="Task" width="32" height="32">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Budget & CTA</h3>
+                                <p class="task-description">Review and sign budget and CTA</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Doc Collection Tasks -->
+                    <div class="task-card pending" data-section="doc-collection" data-task="point-of-contacts">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/8cf8200db0ecf842a3736c534c68390ec697e8ec.svg" alt="Point of Contacts" width="32" height="32">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Point of Contacts</h3>
+                                <p class="task-description">Fill out the form with the required point of contact information</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="task-card pending" data-section="doc-collection" data-task="regulatory-documents">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/3845ce9ce2b2b2fa536286c75b3986badb3197fd.svg" alt="Regulatory Documents" width="29" height="30">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Regulatory Documents</h3>
+                                <p class="task-description">Fill out and sign the necessary regulatory documents below</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Site Initiation Tasks -->
+                    <div class="task-card pending" data-section="site-initiation" data-task="site-qualification-visit">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/sqv.svg" alt="Site Qualification Visit">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Site Qualification Visit</h3>
+                                <p class="task-description">Physical or remote visit to check site capabilities</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="task-card pending" data-section="site-initiation" data-task="investigator-meeting">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/im.svg" alt="Investigator Meeting" width="32" height="28">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Investigator Meeting</h3>
+                                <p class="task-description">Group remote meeting with Vial PM and other Sites running this study</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="task-card pending" data-section="site-initiation" data-task="site-initiation-visit">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/siv.svg" alt="Site Initiation Visit" width="32" height="34">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Site Initiation Visit (SIV)</h3>
+                                <p class="task-description">Site Visit by Vial PM to check equipment and study process</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Supplies & Training Tasks -->
+                    <div class="task-card pending" data-section="supplies-training" data-task="confirm-supplies">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/confirm.svg" alt="Supplies" width="32" height="32">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Confirm supplies received</h3>
+                                <p class="task-description">Confirm that supplies were received</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="task-card pending" data-task="confirm-portal-training" data-section="supplies-training">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/confirmportal.svg" alt="Training" width="32" height="32">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Confirm Portal Training/Access</h3>
+                                <p class="task-description">Confirm if access to portal was granted</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Site Activation Tasks -->
+                    <div class="task-card pending" data-task="site-activation-letter" data-section="site-activation">
+                        <div class="task-content">
+                            <div class="task-icon">
+                                <img src="./assets/f35fec72346a6aa736a4ba0b65ba48b4ee0e115a.svg" alt="Site Activation" width="32" height="32">
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Site Activation Letter</h3>
+                                <p class="task-description">Site Visit by Vial PM to check equipment and study process</p>
+                            </div>
+                        </div>
+                        <div class="task-status pending">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2025</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Site Qualification Visit Overlay -->
+    <div class="sqv-overlay" id="sqv-overlay">
+        <div class="sqv-container">
+            <div class="sqv-header">
+                <h2>Site Qualification Visit</h2>
+                <button class="sqv-close-btn" onclick="closeSQVOverlay()">
+                    <img src="./assets/x_close.svg" alt="Close" width="24" height="24">
+                </button>
+            </div>
+            <div class="sqv-content">
+                <div class="sqv-timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Step 1: Schedule SQV -->
+                    <div class="timeline-step">
+                        <div class="step-icon completed">
+                            <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                        </div>
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>Schedule SQV</h3>
+                            </div>
+                            <div class="step-details">
+                                <div class="detail-badge scheduled">
+                                    <img src="./assets/alarm-clock-green.svg" alt="Clock" width="16" height="16">
+                                    <span>Scheduled Sep 30, 2025</span>
+                                </div>
+                                <div class="detail-badge meeting">
+                                    <img src="./assets/8cf8200db0ecf842a3736c534c68390ec697e8ec.svg" alt="Google Meet" width="20" height="17">
+                                    <span>meet.google.com/wzrqbo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: SQV Completed -->
+                    <div class="timeline-step">
+                        <div class="step-icon pending">
+                            <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                        </div>
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>SQV Completed</h3>
+                            </div>
+                            <div class="step-details">
+                                <div class="detail-badge due" id="sqv-due-badge">
+                                    <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
+                                </div>
+                                <button class="sqv-complete-btn" onclick="completeSQV()">
+                                    <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                    <span>Completed</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Site Selection Letter -->
+                    <div class="timeline-step">
+                        <div class="step-icon pending">
+                            <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                        </div>
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>Site Selection Letter</h3>
+                            </div>
+                            <div class="step-details">
+                                <div class="detail-badge due" id="site-selection-due-badge">
+                                    <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investigator Meeting Sidesheet -->
+    <div class="im-sidesheet" id="im-sidesheet">
+        <div class="im-sidesheet-container">
+            <!-- Sidesheet Header -->
+            <header class="im-sidesheet-header">
+                <h2 class="im-sidesheet-title">Investigator Meeting</h2>
+                <button class="im-sidesheet-close-btn" onclick="closeIMSidesheet()" aria-label="Close sidesheet">
+                    <img src="./assets/x_close.svg" alt="Close" width="24" height="24">
+                </button>
+            </header>
+
+            <!-- Sidesheet Content -->
+            <main class="im-sidesheet-content">
+                <div class="im-timeline">
+                    <!-- Timeline Line -->
+                    <div class="timeline-line-2" aria-hidden="true"></div>
+                    
+                    <!-- Timeline Steps -->
+                    <div class="timeline-steps">
+                        <!-- Step 1: Schedule Investigator Meeting -->
+                        <article class="timeline-step-2">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">Schedule Investigator Meeting</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="im-schedule-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Step 2: Attend Investigator Meeting -->
+                        <article class="timeline-step-2">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">Attend Investigator Meeting</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="im-attend-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                    <button class="im-complete-btn" onclick="completeIM()">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Site Initiation Visit (SIV) Sidesheet -->
+    <div class="siv-sidesheet" id="siv-sidesheet">
+        <div class="siv-sidesheet-container">
+            <!-- Sidesheet Header -->
+            <header class="siv-sidesheet-header">
+                <h2 class="siv-sidesheet-title">Site Initiation Visit (SIV)</h2>
+                <button class="siv-sidesheet-close-btn" onclick="closeSIVSidesheet()" aria-label="Close sidesheet">
+                    <img src="./assets/x_close.svg" alt="Close" width="24" height="24">
+                </button>
+            </header>
+
+            <!-- Sidesheet Content -->
+            <main class="siv-sidesheet-content">
+                <div class="siv-timeline">
+                    <!-- Timeline Line -->
+                    <div class="timeline-line" aria-hidden="true"></div>
+                    
+                    <!-- Timeline Steps -->
+                    <div class="timeline-steps">
+                        <!-- Step 1: Site Initiation Visit (SIV) -->
+                        <article class="timeline-step">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">Site Initiation Visit (SIV)</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="siv-visit-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                    <button class="siv-complete-btn" onclick="completeSIVStep('siv-visit')">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Step 2: Material Review -->
+                        <article class="timeline-step">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">Material Review</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="siv-material-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                    <button class="siv-complete-btn" onclick="completeSIVStep('siv-material')">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Step 3: Attend SIV -->
+                        <article class="timeline-step">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">Attend SIV</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="siv-attend-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                    <button class="siv-complete-btn" onclick="completeSIVStep('siv-attend')">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Step 4: SIV Training Collected -->
+                        <article class="timeline-step">
+                            <div class="step-icon step-icon--pending" aria-label="Step pending">
+                                <img src="./assets/checkgrat.svg" alt="Pending" width="22" height="22">
+                            </div>
+                            <div class="step-content">
+                                <header class="step-header">
+                                    <h3 class="step-title">SIV Training Collected</h3>
+                                </header>
+                                <div class="step-details">
+                                    <div class="detail-badge detail-badge--due" id="siv-training-due-badge">
+                                        <img src="./assets/alarm-clock.svg" alt="Clock" width="16" height="16">
+                                        <span>Due Sep 30, 2025</span>
+                                    </div>
+                                    <button class="siv-complete-btn" onclick="completeSIVStep('siv-training')">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Sidesheet Overlay -->
+    <div class="sidesheet-overlay" id="sidesheet-overlay">
+        <div class="sidesheet-container" id="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Feasibility Questionnaire</div>
+                <div class="sidesheet-actions">
+                    <button class="edit-button" id="edit-button">
+                        <span>Edit</span>
+                    </button>
+                    <button class="close-button" id="close-sidesheet">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="form-container">
+                    <!-- Site Name -->
+                    <div class="form-field">
+                        <label class="form-label">Site Name</label>
+                        <div class="form-input">
+                            <input type="text" value="Downtown Clinical Research Center" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Principal Investigator -->
+                    <div class="form-field">
+                        <label class="form-label">Principal Investigator (PI) Name</label>
+                        <div class="form-input">
+                            <input type="text" value="Dr. Emma Johnson" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Clinical Trials Question -->
+                    <div class="form-field">
+                        <label class="form-label">Has your site conducted clinical trials in the past 3 years?</label>
+                        <div class="button-group">
+                            <button class="yes-no-button active" disabled>Yes</button>
+                            <button class="yes-no-button" disabled>No</button>
+                        </div>
+                        <div class="form-input">
+                            <textarea disabled>Yes, we have conducted 8 clinical trials in the last 3 years in metabolic and cardiovascular indications.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Type 2 Diabetes Question -->
+                    <div class="form-field">
+                        <label class="form-label">Do you have experience with studies in Type 2 Diabetes?</label>
+                        <div class="button-group">
+                            <button class="yes-no-button active" disabled>Yes</button>
+                            <button class="yes-no-button" disabled>No</button>
+                        </div>
+                        <div class="form-input">
+                            <textarea disabled>Yes, we have participated in 3 diabetes studies in the past 2 years.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Patient Population Question -->
+                    <div class="form-field">
+                        <label class="form-label">Do you have access to the target patient population?</label>
+                        <div class="button-group">
+                            <button class="yes-no-button active" disabled>Yes</button>
+                            <button class="yes-no-button" disabled>No</button>
+                        </div>
+                        <div class="form-input">
+                            <textarea disabled>Yes, we have a database of over 600 Type 2 Diabetes patients managed at our site.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Enrollment Estimate -->
+                    <div class="form-field">
+                        <label class="form-label">Estimated number of patients you can enroll in this study:</label>
+                        <div class="form-input">
+                            <input type="text" value="12–15 patients over 6 months" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Question -->
+                    <div class="form-field">
+                        <label class="form-label">Do you have the required equipment for study procedures (e.g., ECG, centrifuge, -80°C freezer)?</label>
+                        <div class="button-group">
+                            <button class="yes-no-button active" disabled>Yes</button>
+                            <button class="yes-no-button" disabled>No</button>
+                        </div>
+                        <div class="form-input">
+                            <textarea disabled>Yes, all required equipment is available on-site and calibrated annually.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- IRB Timeline -->
+                    <div class="form-field">
+                        <label class="form-label">What is your typical timeline to complete ethics/IRB submission and approval?</label>
+                        <div class="form-input">
+                            <input type="text" value="3–5 weeks" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Interest Question -->
+                    <div class="form-field">
+                        <label class="form-label">Would your site be interested in participating in this study?</label>
+                        <div class="button-group">
+                            <button class="yes-no-button active" disabled>Yes</button>
+                            <button class="yes-no-button" disabled>No</button>
+                        </div>
+                        <div class="form-input">
+                            <textarea disabled>Yes, we are interested and have the capacity to start within 4 weeks of site activation.</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget & CTA Sidesheet Overlay -->
+    <div class="sidesheet-overlay" id="budget-sidesheet-overlay">
+        <div class="sidesheet-container" id="budget-sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Budget & CTA</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-budget-sidesheet">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-review-container">
+                    <!-- Arcadia Site Budget Document -->
+                    <div class="document-card">
+                        <div class="document-header">
+                                                <div class="document-info">
+                        <div class="document-title">Arcadia Site Budget</div>
+                    </div>
+                    <div class="document-status">
+                        <!-- Checkmark will be added via JavaScript when approved -->
+                    </div>
+                        </div>
+                        
+                        <div class="document-meta">
+                            <div class="meta-badges">
+                                <span class="meta-badge">v3</span>
+                                <span class="meta-badge">XLS</span>
+                            </div>
+                            <div class="meta-date">Last modified Jan 8, 2025 at 13:51 EST</div>
+                        </div>
+                        
+                        <div class="document-description">
+                            If changes to the document are required, click Update Document to upload a modified version of the document. You can click Edit Info to change the metadata that was already entered. The document will be automatically updated to reflect the changes.
+                        </div>
+                        
+                        <div class="document-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn primary">View Document</button>
+                                <button class="action-btn">Update Document</button>
+                                <button class="action-btn">Edit Info</button>
+                            </div>
+                            <button class="approve-btn" id="approve-budget">
+                                Approve
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Arcadia Site CTA Document -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-info">
+                                <div class="document-title">Arcadia Site CTA</div>
+                            </div>
+                            <div class="document-status">
+                                <img src="./assets/8e8269db2fe8c646c1ed0be85c00cd2ee71a1a50.svg" alt="Approved" width="24" height="24">
+                            </div>
+                        </div>
+                        
+                        <div class="document-actions">
+                            <button class="action-btn primary">
+                                View Document
+                                <img src="./assets/chevron-right.svg" alt="Arrow" width="12" height="12">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="section-divider"></div>
+
+                <!-- Comments and Activity Section -->
+                <div class="activity-section">
+                    <!-- Comment Input -->
+                    <div class="comment-input">
+                        <textarea placeholder="Add a comment" class="comment-textarea" id="comment-textarea"></textarea>
+                        <div class="comment-actions">
+                            <button class="comment-btn secondary" id="cancel-comment">Cancel</button>
+                            <button class="comment-btn primary" id="send-comment">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Comment Activity -->
+                        <div class="activity-item">
+                            <div class="activity-avatar">HW</div>
+                            <div class="activity-content">
+                                <div class="activity-header">
+                                    <span class="activity-user">Herbert Wright</span>
+                                    <span class="activity-action">added a comment</span>
+                                    <span class="activity-time">April 6 2022, 12:21 PM</span>
+                                </div>
+                                <div class="activity-text">
+                                    Sent to John for his review this afternoon.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Activity -->
+                        <div class="activity-item">
+                            <div class="activity-avatar">HW</div>
+                            <div class="activity-content">
+                                <div class="activity-header">
+                                    <span class="activity-user">Herbert Wright</span>
+                                    <span class="activity-action">uploaded</span>
+                                    <span class="activity-document">Arcadia Site Budget v3</span>
+                                    <span class="activity-time">April 6 2022, 12:21 PM</span>
+                                </div>
+                                <div class="activity-text">
+                                    Updated patient payment schedule
+                                </div>
+                                <div class="activity-file">
+                                    <img src="./assets/667e3d9f36857ce2e0212ecdbccf6ac42e50cd9e.svg" alt="Excel" width="12" height="12">
+                                    <span>ArcadiaSiteBudgetV3.xls</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Another Upload Activity -->
+                        <div class="activity-item">
+                            <div class="activity-avatar">HW</div>
+                            <div class="activity-content">
+                                <div class="activity-header">
+                                    <span class="activity-user">Herbert Wright</span>
+                                    <span class="activity-action">uploaded</span>
+                                    <span class="activity-document">Arcadia Site Budget v3</span>
+                                    <span class="activity-time">April 6 2022, 12:21 PM</span>
+                                </div>
+                                <div class="activity-file">
+                                    <img src="./assets/667e3d9f36857ce2e0212ecdbccf6ac42e50cd9e.svg" alt="Excel" width="12" height="12">
+                                    <span>ArcadiaSiteBudgetV3.xls</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Point of Contacts Sidesheet Overlay -->
+    <div class="sidesheet-overlay" id="point-of-contacts-sidesheet-overlay">
+        <div class="sidesheet-container" id="point-of-contacts-sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Point of Contacts</div>
+                <div class="sidesheet-actions">
+                    <button class="edit-btn" id="edit-contacts-btn">
+                        <img src="./assets/84fc22550c76ed3fe247f7c054db1fd65c249ed9.svg" alt="Edit" width="14" height="14">
+                        Edit
+                    </button>
+                    <button class="close-btn" id="close-contacts-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content" id="contacts-view-mode">
+            <!-- Principal Investigator Section -->
+            <div class="contact-section">
+                <div class="section-header">
+                    <img src="./assets/26386cd2b3111d1f8c7139075b1bfc53372bb6ad.svg" alt="Check" width="20" height="20">
+                    <h3>Principal Investigator</h3>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/5d36ec79e18547c76a7473c07b20d607272b67b4.svg" alt="User" width="14" height="14">
+                            <span>Name</span>
+                        </div>
+                        <input type="text" class="contact-input" id="pi-name" value="John Levinson" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/466ca090bd01d8369fd61a41cbf7a588ea953807.svg" alt="Phone" width="14" height="14">
+                            <span>Phone</span>
+                        </div>
+                        <input type="tel" class="contact-input" id="pi-phone" value="+1 123 123 1234" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/14498bc2d3865b1d5d909cc9c6ebd215ed2aeb35.svg" alt="Email" width="14" height="14">
+                            <span>Email</span>
+                        </div>
+                        <input type="email" class="contact-input" id="pi-email" value="johnlevinson@clinic.com" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Clinical Research Coordinator Section -->
+            <div class="contact-section">
+                <div class="section-header">
+                    <img src="./assets/26386cd2b3111d1f8c7139075b1bfc53372bb6ad.svg" alt="Check" width="20" height="20">
+                    <h3>Clinical Research Coordinator</h3>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/5d36ec79e18547c76a7473c07b20d607272b67b4.svg" alt="User" width="14" height="14">
+                            <span>Name</span>
+                        </div>
+                        <input type="text" class="contact-input" id="crc-name" value="John Levinson" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/466ca090bd01d8369fd61a41cbf7a588ea953807.svg" alt="Phone" width="14" height="14">
+                            <span>Phone</span>
+                        </div>
+                        <input type="tel" class="contact-input" id="crc-phone" value="+1 123 123 1234" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/14498bc2d3865b1d5d909cc9c6ebd215ed2aeb35.svg" alt="Email" width="14" height="14">
+                            <span>Email</span>
+                        </div>
+                        <input type="email" class="contact-input" id="crc-email" value="johnlevinson@clinic.com" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- LAB Section -->
+            <div class="contact-section">
+                <div class="section-header">
+                    <img src="./assets/26386cd2b3111d1f8c7139075b1bfc53372bb6ad.svg" alt="Check" width="20" height="20">
+                    <h3>LAB</h3>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/5d36ec79e18547c76a7473c07b20d607272b67b4.svg" alt="User" width="14" height="14">
+                            <span>Shipment Address</span>
+                        </div>
+                        <textarea class="contact-textarea" id="lab-address" readonly>8716 San Juan Street Clayton, NC 27520</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Sub Investigator Section -->
+            <div class="contact-section">
+                <div class="section-header">
+                    <img src="./assets/4f078d6320459c33edc71777dddec3be4767ed8b.svg" alt="Add" width="20" height="20">
+                    <h3>Sub Investigator</h3>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/5d36ec79e18547c76a7473c07b20d607272b67b4.svg" alt="User" width="14" height="14">
+                            <span>Name</span>
+                        </div>
+                        <input type="text" class="contact-input" id="sub-name" placeholder="Add name" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/466ca090bd01d8369fd61a41cbf7a588ea953807.svg" alt="Phone" width="14" height="14">
+                            <span>Phone</span>
+                        </div>
+                        <input type="tel" class="contact-input" id="sub-phone" placeholder="Add phone" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/14498bc2d3865b1d5d909cc9c6ebd215ed2aeb35.svg" alt="Email" width="14" height="14">
+                            <span>Email</span>
+                        </div>
+                        <input type="email" class="contact-input" id="sub-email" placeholder="Add email" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Vial Team Section -->
+            <div class="contact-section vial-team">
+                <div class="section-header">
+                    <img src="./assets/26386cd2b3111d1f8c7139075b1bfc53372bb6ad.svg" alt="Check" width="20" height="20">
+                    <h3>Vial Team</h3>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/5d36ec79e18547c76a7473c07b20d607272b67b4.svg" alt="User" width="14" height="14">
+                            <span>Name</span>
+                        </div>
+                        <input type="text" class="contact-input" id="vial-name" value="John Levinson" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/466ca090bd01d8369fd61a41cbf7a588ea953807.svg" alt="Phone" width="14" height="14">
+                            <span>Phone</span>
+                        </div>
+                        <input type="tel" class="contact-input" id="vial-phone" value="+1 123 123 1234" readonly>
+                    </div>
+                    <div class="contact-field">
+                        <div class="field-label">
+                            <img src="./assets/14498bc2d3865b1d5d909cc9c6ebd215ed2aeb35.svg" alt="Email" width="14" height="14">
+                            <span>Email</span>
+                        </div>
+                        <input type="email" class="contact-input" id="vial-email" value="johnlevinson@clinic.com" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Regulatory Documents Sidesheet Overlay -->
+    <div class="sidesheet-overlay" id="regulatory-documents-sidesheet-overlay">
+        <div class="sidesheet-container" id="regulatory-documents-sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Regulatory Documents</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-regulatory-documents-sidesheet">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="regulatory-documents-list">
+                    <!-- Form 1572 -->
+                    <div class="regulatory-document-item" id="form-1572-item" data-document="form-1572">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Form 1572</div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PI FDF -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">PI FDF</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signed Medical License and CVs -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Signed Medical License and CVs</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-Investigator FDFs -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Sub-Investigator FDFs</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protocol Signature Page -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Protocol Signature Page</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IB Acknowledgement of Receipt -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">IB Acknowledgement of Receipt</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Site Staff GCP Training and IATA Training -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Site Staff GCP Training and IATA Training</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lab Certificates (Local Labs Only) -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Lab Certificates (Local Labs Only)</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delegation of Authority -->
+                    <div class="regulatory-document-item">
+                        <div class="document-info">
+                            <div class="document-icon">
+                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                            </div>
+                            <div class="document-details">
+                                <div class="document-title">Delegation of Authority</div>
+                                <div class="document-status completed">
+                                    <div class="status-badge">
+                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                                        <span>Completed Sep 30, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="document-arrow">
+                            <div class="chevron-right">
+                                <div class="chevron-icon">
+                                    <img src="./assets/chevron-right.svg" alt="Chevron Right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form 1572 Document Sidesheet -->
+    <div id="form-1572-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="form-1572-sidesheet-container" class="sidesheet-container form-1572-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Form 1572</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-form-1572-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="form-1572-content">
+                    <!-- Document Preview Section -->
+                    <div class="document-preview-section">
+                        <div class="document-preview-container">
+                            <div class="document-preview" style="background-image: url('./assets/b53ff36fd0bbb52f20c8d79f78d62b03730d8f43.png')"></div>
+                            <div class="document-preview" style="background-image: url('./assets/55715e61d010bec3917a78e44cc20d8a0451e27d.png')"></div>
+                            <div class="document-preview" style="background-image: url('./assets/b53ff36fd0bbb52f20c8d79f78d62b03730d8f43.png')"></div>
+                        </div>
+                    </div>
+
+                    <!-- Signature Form Section -->
+                    <div class="signature-form-section" id="signature-form-section">
+                        <div class="signature-form-container">
+                            <div class="signature-form-header">
+                                <div class="signature-form-title">Sign Document</div>
+                                <div class="signature-form-subtitle">Please review the document before signing.</div>
+                            </div>
+
+                            <!-- Full Name Input -->
+                            <div class="form-input-group">
+                                <div class="form-label">Full Name</div>
+                                <div class="form-input">
+                                    <input type="text" id="full-name-input" value="John Levinson" readonly>
+                                </div>
+                            </div>
+
+                            <!-- Signature Input -->
+                            <div class="form-input-group">
+                                <div class="form-label">Signature</div>
+                                <div class="signature-input" id="signature-input">
+                                    <div class="signature-text">John Levinson</div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button class="submit-signature-btn" id="submit-signature-btn">
+                                Submit Signature
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Document Signed Section (Hidden by default) -->
+                    <div class="signature-form-section signed-section" id="signed-section" style="display: none;">
+                        <div class="signature-form-container">
+                            <div class="signature-form-header">
+                                <div class="signature-form-title">Document Signed</div>
+                                <div class="signature-form-subtitle">Everyone has signed! You will receive an Email copy of the signed document.</div>
+                            </div>
+
+                            <!-- Signed Signature Display -->
+                            <div class="form-input-group">
+                                <div class="signed-signature-display" id="signed-signature-display">
+                                    <div class="signed-signature-text">John Levinson</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Supplies Received Sidesheet -->
+    <div class="supplies-sidesheet" id="supplies-sidesheet">
+        <div class="supplies-sidesheet-container">
+            <div class="supplies-sidesheet-header">
+                <h2 class="supplies-sidesheet-title">Confirm supplies received</h2>
+                <button class="supplies-sidesheet-close-btn" onclick="closeSuppliesSidesheet()" aria-label="Close sidesheet">
+                    <div class="close-icon">
+                        <div class="close-line">
+                            <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                        </div>
+                        <div class="close-line">
+                            <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <main class="supplies-sidesheet-content">
+                <!-- IP Shipment -->
+                <div class="supply-item">
+                    <div class="supply-header">
+                        <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Seal Check" width="22" height="22">
+                        <h3>IP Shipment</h3>
+                    </div>
+                    <div class="supply-details">
+                        <div class="detail-badge">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                            <span>Due Sep 30, 2024</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>8716 San Juan Street Clayton, NC 27520</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>Tracking No. 21389641872343</span>
+                        </div>
+                    </div>
+                    <button class="confirm-receipt-btn" onclick="handleConfirmReceipt('IP Shipment')">
+                        <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                        <span>Confirm Receipt</span>
+                    </button>
+                </div>
+
+                <!-- Lab Kits -->
+                <div class="supply-item">
+                    <div class="supply-header">
+                        <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Seal Check" width="22" height="22">
+                        <h3>Lab Kits</h3>
+                    </div>
+                    <div class="supply-details">
+                        <div class="detail-badge">
+                            <span>8716 San Juan Street Clayton, NC 27520</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>Tracking No. 21389641872343</span>
+                        </div>
+                    </div>
+                    <button class="confirm-receipt-btn" onclick="handleConfirmReceipt('Lab Kits')">
+                        <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                        <span>Confirm Receipt</span>
+                    </button>
+                </div>
+
+                <!-- ECG -->
+                <div class="supply-item">
+                    <div class="supply-header">
+                        <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Seal Check" width="22" height="22">
+                        <h3>ECG</h3>
+                    </div>
+                    <div class="supply-details">
+                        <div class="detail-badge">
+                            <span>8716 San Juan Street Clayton, NC 27520</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>Tracking No. 21389641872343</span>
+                        </div>
+                    </div>
+                    <button class="confirm-receipt-btn" onclick="handleConfirmReceipt('ECG')">
+                        <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                        <span>Confirm Receipt</span>
+                    </button>
+                </div>
+
+                <!-- Tablet -->
+                <div class="supply-item">
+                    <div class="supply-header">
+                        <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Seal Check" width="22" height="22">
+                        <h3>Tablet</h3>
+                    </div>
+                    <div class="supply-details">
+                        <div class="detail-badge">
+                            <span>8716 San Juan Street Clayton, NC 27520</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>Tracking No. 21389641872343</span>
+                        </div>
+                    </div>
+                    <button class="confirm-receipt-btn" onclick="handleConfirmReceipt('Tablet')">
+                        <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                        <span>Confirm Receipt</span>
+                    </button>
+                </div>
+
+                <!-- Investigator Site File -->
+                <div class="supply-item">
+                    <div class="supply-header">
+                        <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Seal Check" width="22" height="22">
+                        <h3>Investigator Site File</h3>
+                    </div>
+                    <div class="supply-details">
+                        <div class="detail-badge">
+                            <span>8716 San Juan Street Clayton, NC 27520</span>
+                        </div>
+                        <div class="detail-badge">
+                            <span>Tracking No. 21389641872343</span>
+                        </div>
+                    </div>
+                    <button class="confirm-receipt-btn" onclick="handleConfirmReceipt('Investigator Site File')">
+                        <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                        <span>Confirm Receipt</span>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Portal Training/Access Sidesheet -->
+    <div id="portal-training-sidesheet" class="sidesheet-overlay">
+        <div class="portal-training-sidesheet-container">
+            <div class="portal-training-sidesheet-header">
+                <h2 class="portal-training-sidesheet-title">Confirm Portal Training/Access</h2>
+                <button class="portal-training-sidesheet-close-btn" onclick="closePortalTrainingSidesheet()" aria-label="Close sidesheet">
+                    <div class="close-icon">
+                        <div class="close-line">
+                            <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                        </div>
+                        <div class="close-line">
+                            <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="main">
+                <div class="portal-training-sidesheet-content">
+                    <div class="training-item">
+                        <div class="training-header">
+                            <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Training" width="22" height="22">
+                            <h3>Investigator Space</h3>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-badge">
+                                <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                <span>Due Sep 30, 2024</span>
+                            </div>
+                            <div class="detail-badge">
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="confirm-training-btn" onclick="handleConfirmTraining('Investigator Space')">
+                            <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                            <span>Confirm Training / Access</span>
+                        </button>
+                    </div>
+
+                    <div class="training-item">
+                        <div class="training-header">
+                            <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Training" width="22" height="22">
+                            <h3>EDC</h3>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-badge">
+                                <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                <span>Due Sep 30, 2024</span>
+                            </div>
+                            <div class="detail-badge">
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="confirm-training-btn" onclick="handleConfirmTraining('EDC')">
+                            <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                            <span>Confirm Training / Access</span>
+                        </button>
+                    </div>
+
+                    <div class="training-item">
+                        <div class="training-header">
+                            <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Training" width="22" height="22">
+                            <h3>ECG</h3>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-badge">
+                                <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                <span>Due Sep 30, 2024</span>
+                            </div>
+                            <div class="detail-badge">
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="confirm-training-btn" onclick="handleConfirmTraining('ECG')">
+                            <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                            <span>Confirm Training / Access</span>
+                        </button>
+                    </div>
+
+                    <div class="training-item">
+                        <div class="training-header">
+                            <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Training" width="22" height="22">
+                            <h3>Central Lab</h3>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-badge">
+                                <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                <span>Due Sep 30, 2024</span>
+                            </div>
+                            <div class="detail-badge">
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="confirm-training-btn" onclick="handleConfirmTraining('Central Lab')">
+                            <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                            <span>Confirm Training / Access</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Activation Letter Sidesheet -->
+    <div id="site-activation-sidesheet" class="sidesheet-overlay">
+        <div class="site-activation-sidesheet-container">
+            <div class="site-activation-sidesheet-header">
+                <h2 class="site-activation-sidesheet-title">Site Activation Letter</h2>
+                <button class="site-activation-sidesheet-close-btn" onclick="closeSiteActivationSidesheet()" aria-label="Close sidesheet">
+                    <div class="close-icon">
+                        <div class="close-line">
+                            <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                        </div>
+                        <div class="close-line">
+                            <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="main">
+                <div class="site-activation-sidesheet-content">
+                    <div class="activation-item">
+                        <div class="activation-header">
+                            <img src="./assets/4e4bc11321adc1bbab707439418c9eb1b7a6dd67.svg" alt="Activation" width="22" height="22">
+                            <h3>Site Activation Letter Sent</h3>
+                        </div>
+                        <div class="activation-details">
+                            <div class="detail-badge">
+                                <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                <span>Due Sep 30, 2024</span>
+                            </div>
+                            <div class="detail-badge">
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <button class="confirm-activation-btn" onclick="handleConfirmActivation('Site Activation Letter Sent')">
+                            <img src="./assets/9ef0a5c9f15769388efe2152a1279354675e72ef.svg" alt="Checkmark" width="16" height="16">
+                            <span>Confirm Receipt</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
