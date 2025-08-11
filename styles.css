@@ -1636,6 +1636,7 @@ body {
     background: #ffffff;
     color: #282c52;
     border-color: #eaeaee;
+    border-radius: 8px;
 }
 
 .action-btn.primary:hover {
