@@ -2119,11 +2119,18 @@ body {
     color: #9395a8;
 }
 
-/* Red placeholder text for add fields in Point of Contacts */
+/* Red placeholder text for add fields in Point of Contacts (view mode only) */
 #sub-name::placeholder,
 #sub-phone::placeholder,
 #sub-email::placeholder {
     color: #e03131;
+}
+
+/* Gray placeholder text for add fields in edit mode */
+#sub-name:not([readonly])::placeholder,
+#sub-phone:not([readonly])::placeholder,
+#sub-email:not([readonly])::placeholder {
+    color: #9395a8;
 }
 
 .contact-textarea {
