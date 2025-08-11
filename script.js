@@ -1679,7 +1679,7 @@ function completeIM() {
     const completeBtn = document.querySelector('.im-complete-btn');
     if (completeBtn) {
         completeBtn.innerHTML = `
-            <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+            <img src="./assets/check.svg" alt="Check" width="16" height="16">
             <span>IM Completed</span>
         `;
         completeBtn.disabled = true;

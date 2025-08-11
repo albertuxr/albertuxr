@@ -703,8 +703,9 @@ body {
 
 .step-details {
     display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
 }
 
@@ -982,7 +983,7 @@ body {
 .im-timeline .step-details {
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
 }
 
@@ -1146,7 +1147,7 @@ body {
 .siv-timeline .step-details {
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
 }
 
