@@ -122,6 +122,12 @@ body {
     gap: 16px;
     flex-shrink: 0;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .breadcrumb {
@@ -263,6 +269,42 @@ body {
     flex-shrink: 0;
 }
 
+/* Layout Toggle Button */
+.layout-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e6ebeb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #343a40;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    height: 40px;
+    min-width: 100px;
+}
+
+.layout-toggle-btn:hover {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.layout-toggle-btn.active {
+    background: #339af0;
+    color: #ffffff;
+    border-color: #339af0;
+}
+
+.layout-toggle-btn.active span {
+    color: #ffffff;
+}
+
 /* Content Container */
 .content-container {
     flex: 1;
@@ -271,6 +313,7 @@ body {
     max-width: 900px;
     margin: 0 auto;
     width: 100%;
+    padding-top: 76px; /* Account for fixed top navigation (56px + 20px) */
 }
 
 /* Progress Tracker */
@@ -3091,6 +3134,24 @@ body {
     .site-activation-sidesheet-content {
         padding: 16px;
     }
+}
+
+/* List view layout styles */
+.content-container.list-view .progress-tracker {
+    display: none;
+}
+
+.content-container.list-view .task-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+}
+
+.content-container.list-view .task-card {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 

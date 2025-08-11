@@ -894,6 +894,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize progress tracker with correct counts
     initializeProgressTracker();
     
+    // Initialize layout to list view by default
+    initializeLayout();
+    
     // Initialize with Budget & CTA section active
     filterSection('budget');
     
@@ -1443,6 +1446,68 @@ function closeSQVOverlay() {
     }
 }
 
+// Toggle between tabbed and list view
+function toggleLayout() {
+    const contentContainer = document.querySelector('.content-container');
+    const layoutToggleBtn = document.querySelector('.layout-toggle-btn');
+    const progressTracker = document.querySelector('.progress-tracker');
+    const taskCards = document.querySelector('.task-cards');
+    const allTaskCards = document.querySelectorAll('.task-card');
+    
+    // Toggle the list view class
+    contentContainer.classList.toggle('list-view');
+    
+    // Update button text and state
+    if (contentContainer.classList.contains('list-view')) {
+        layoutToggleBtn.classList.add('active');
+        layoutToggleBtn.querySelector('span').textContent = 'Tab View';
+        
+        // Show all task cards in list view
+        allTaskCards.forEach(card => {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+        });
+    } else {
+        layoutToggleBtn.classList.remove('active');
+        layoutToggleBtn.querySelector('span').textContent = 'List View';
+        
+        // Reset to tabbed view - show only active section
+        const activeSection = document.querySelector('.progress-item.active').getAttribute('data-section');
+        allTaskCards.forEach(card => {
+            const cardSection = card.getAttribute('data-section');
+            if (cardSection === activeSection) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+            } else {
+                card.style.display = 'none';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            }
+        });
+    }
+}
+
+// Initialize layout to list view by default
+function initializeLayout() {
+    const contentContainer = document.querySelector('.content-container');
+    const layoutToggleBtn = document.querySelector('.layout-toggle-btn');
+    const allTaskCards = document.querySelectorAll('.task-card');
+    
+    // Set to list view by default
+    contentContainer.classList.add('list-view');
+    layoutToggleBtn.classList.add('active');
+    layoutToggleBtn.querySelector('span').textContent = 'Tab View';
+    
+    // Show all task cards in list view
+    allTaskCards.forEach(card => {
+        card.style.display = 'flex';
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+    });
+}
+
 /**
  * Completes all SQV tasks and marks the SQV task card as complete
  */
@@ -1590,7 +1655,7 @@ function completeIM() {
     const completeBtn = document.querySelector('.im-complete-btn');
     if (completeBtn) {
         completeBtn.innerHTML = `
-            <img src="./assets/check.svg" alt="Check" width="16" height="16">
+            <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
             <span>IM Completed</span>
         `;
         completeBtn.disabled = true;
