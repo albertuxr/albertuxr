@@ -301,13 +301,13 @@ body {
 }
 
 .layout-toggle-btn.active {
-    background: #339af0;
-    color: #ffffff;
-    border-color: #339af0;
+    background: #ffffff;
+    color: #343a40;
+    border-color: #e6ebeb;
 }
 
 .layout-toggle-btn.active span {
-    color: #ffffff;
+    color: #343a40;
 }
 
 /* Content Container */
@@ -3195,5 +3195,7 @@ body {
     opacity: 1 !important;
     transform: none !important;
 }
+
+
 
 

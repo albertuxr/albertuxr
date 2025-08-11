@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const regulatoryDocumentsOverlay = document.getElementById('regulatory-documents-sidesheet-overlay');
         if (regulatoryDocumentsOverlay) {
             regulatoryDocumentsOverlay.classList.remove('active');
+            regulatoryDocumentsOverlay.style.display = 'none';
         }
         
         // Close Form 1572 sidesheet
@@ -148,6 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (siteActivationSidesheet) {
             siteActivationSidesheet.classList.remove('active');
         }
+        
+
         
         // Restore scrolling
         document.body.style.overflow = '';
@@ -271,6 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('ERROR: Could not find Form 1572 sidesheet overlay to close!');
         }
     }
+    
+
 
     function handleSignatureSubmission() {
         console.log('=== handleSignatureSubmission called ===');
@@ -920,6 +925,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+
+    
     // Sidebar toggle functionality
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
@@ -1372,6 +1379,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         updateTaskStatusBasedOnData();
     }, 500);
+
+
 });
 
 /* ==========================================================================
