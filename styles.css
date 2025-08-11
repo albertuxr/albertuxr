@@ -282,7 +282,7 @@ body {
     gap: 8px;
     background: #ffffff;
     border: 1px solid #e6ebeb;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 8px 12px;
     font-size: 12px;
     font-weight: 500;
@@ -762,13 +762,15 @@ body {
     background: #339af0;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 8px 12px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 8px;
+    height: 40px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .sqv-complete-btn:hover {
@@ -793,13 +795,15 @@ body {
     background: #339af0;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 8px 12px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 8px;
+    height: 40px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .im-complete-btn:hover {
@@ -824,13 +828,15 @@ body {
     background: #339af0;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 8px 12px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 8px;
+    height: 40px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .siv-complete-btn:hover {
@@ -910,12 +916,14 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.2s ease;
+    border-radius: 8px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .im-sidesheet-close-btn:hover {
@@ -1069,12 +1077,14 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.2s ease;
+    border-radius: 8px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .siv-sidesheet-close-btn:hover {
@@ -1262,7 +1272,8 @@ body {
     gap: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    box-shadow: 0px 3px 0.4px 0px rgba(161, 161, 161, 0.38);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+    height: 40px;
 }
 
 .edit-button:hover {
@@ -1280,14 +1291,15 @@ body {
 .close-button {
     background: none;
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .close-button:hover {
@@ -1424,7 +1436,7 @@ body {
 .yes-no-button {
     background: #f7f9f9;
     border: 1px solid #d5dede;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 8px 16px;
     font-size: 14px;
     font-weight: 600;
@@ -1432,10 +1444,11 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     min-width: 100px;
-    height: 48px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .yes-no-button.active {
@@ -1596,6 +1609,7 @@ body {
     white-space: nowrap;
     flex: 1;
     justify-content: center;
+    height: 40px;
 }
 
 .action-btn:first-child {
@@ -1641,6 +1655,7 @@ body {
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
     white-space: nowrap;
     flex-shrink: 0;
+    height: 40px;
 }
 
 .approve-btn:hover {
@@ -1720,6 +1735,7 @@ body {
     align-items: center;
     gap: 8px;
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+    height: 40px;
 }
 
 .comment-btn:hover {
@@ -2476,9 +2492,10 @@ body {
     font-size: 14px;
     line-height: 1.55;
     cursor: pointer;
-    box-shadow: 0px 3px 0.4px 0px rgba(161, 161, 161, 0.38);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
     transition: background-color 0.2s ease, transform 0.1s ease;
     margin-top: 8px;
+    height: 40px;
 }
 
 .submit-signature-btn:hover {
@@ -2659,8 +2676,14 @@ body {
     border: none;
     cursor: pointer;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background-color 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .supplies-sidesheet-close-btn:hover {
@@ -2757,6 +2780,7 @@ body {
     gap: 8px;
     transition: background-color 0.2s ease;
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+    height: 40px;
 }
 
 .confirm-receipt-btn:hover {
@@ -2827,13 +2851,14 @@ body {
     border: none;
     cursor: pointer;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .portal-training-sidesheet-close-btn:hover {
@@ -2928,6 +2953,7 @@ body {
     gap: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+    height: 40px;
 }
 
 .confirm-training-btn:hover {
@@ -3003,13 +3029,14 @@ body {
     border: none;
     cursor: pointer;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
 .site-activation-sidesheet-close-btn:hover {
@@ -3104,6 +3131,7 @@ body {
     gap: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+    height: 40px;
 }
 
 .confirm-activation-btn:hover {
