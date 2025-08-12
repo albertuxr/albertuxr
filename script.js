@@ -248,7 +248,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function openForm1572Sidesheet() {
         console.log('=== openForm1572Sidesheet called ===');
-        closeAllSidesheets();
+        
+        // Close all sidesheets except regulatory documents
+        const feasibilityOverlay = document.getElementById('sidesheet-overlay');
+        const budgetOverlay = document.getElementById('budget-sidesheet-overlay');
+        const pointOfContactsOverlay = document.getElementById('point-of-contacts-sidesheet-overlay');
+        const suppliesSidesheet = document.getElementById('supplies-sidesheet');
+        const portalTrainingSidesheet = document.getElementById('portal-training-sidesheet');
+        const siteActivationSidesheet = document.getElementById('site-activation-sidesheet');
+        
+        // Close other sidesheets
+        if (feasibilityOverlay) feasibilityOverlay.classList.remove('active');
+        if (budgetOverlay) budgetOverlay.classList.remove('active');
+        if (pointOfContactsOverlay) pointOfContactsOverlay.classList.remove('active');
+        if (suppliesSidesheet) suppliesSidesheet.classList.remove('active');
+        if (portalTrainingSidesheet) portalTrainingSidesheet.classList.remove('active');
+        if (siteActivationSidesheet) siteActivationSidesheet.classList.remove('active');
+        
+        // Hide regulatory documents sidesheet temporarily (don't close it)
+        const regulatoryDocumentsOverlay = document.getElementById('regulatory-documents-sidesheet-overlay');
+        if (regulatoryDocumentsOverlay) {
+            regulatoryDocumentsOverlay.style.visibility = 'hidden';
+        }
+        
         const sidesheetOverlay = document.getElementById('form-1572-sidesheet-overlay');
         if (sidesheetOverlay) {
             console.log('Found Form 1572 sidesheet overlay:', sidesheetOverlay);
@@ -268,7 +290,18 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Found Form 1572 sidesheet overlay to close:', sidesheetOverlay);
             sidesheetOverlay.classList.remove('active');
             sidesheetOverlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            
+            // Return to regulatory documents sidesheet
+            const regulatoryDocumentsOverlay = document.getElementById('regulatory-documents-sidesheet-overlay');
+            if (regulatoryDocumentsOverlay) {
+                regulatoryDocumentsOverlay.style.visibility = 'visible';
+                regulatoryDocumentsOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.log('Returned to regulatory documents sidesheet');
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+            
             console.log('Form 1572 overlay classes after closing:', sidesheetOverlay.className);
         } else {
             console.log('ERROR: Could not find Form 1572 sidesheet overlay to close!');
@@ -2337,6 +2370,73 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Regulatory Documents Upload Area Click Handlers
+    const regulatoryUploadAreas = document.querySelectorAll('.upload-area');
+    regulatoryUploadAreas.forEach(uploadArea => {
+        uploadArea.addEventListener('click', function(e) {
+            // Don't trigger if clicking on the browse link
+            if (e.target.classList.contains('upload-link')) {
+                return;
+            }
+            
+            // Create mock file based on the document type
+            const documentTitle = this.closest('.document-upload-section')?.querySelector('.upload-title')?.textContent || 'Document';
+            let mockFileName = 'Document.pdf';
+            
+            if (documentTitle.includes('PI FDF')) {
+                mockFileName = 'PI_Financial_Disclosure_Form.pdf';
+            } else if (documentTitle.includes('Medical License')) {
+                mockFileName = 'Medical_License_and_CVs.pdf';
+            } else if (documentTitle.includes('Sub-Investigator')) {
+                mockFileName = 'Sub_Investigator_FDFs.pdf';
+            } else if (documentTitle.includes('Protocol Signature')) {
+                mockFileName = 'Protocol_Signature_Page.pdf';
+            } else if (documentTitle.includes('IB Acknowledgement')) {
+                mockFileName = 'IB_Acknowledgement.pdf';
+            } else if (documentTitle.includes('GCP Training')) {
+                mockFileName = 'GCP_Training_Certificates.pdf';
+            } else if (documentTitle.includes('Lab Certificates')) {
+                mockFileName = 'Lab_Certificates.pdf';
+            }
+            
+            const mockFile = {
+                name: mockFileName,
+                size: '1.2 MB',
+                type: 'application/pdf'
+            };
+            
+            selectedFile = mockFile;
+            this.classList.add('has-file');
+            
+            // Enable the upload button
+            const uploadBtn = this.closest('.document-upload-section')?.querySelector('.upload-btn');
+            if (uploadBtn) {
+                uploadBtn.disabled = false;
+            }
+            
+            // Update upload area text
+            const uploadText = this.querySelector('.upload-text p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            // Change icon to checkbox
+            const uploadIcon = this.querySelector('.upload-icon img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
+            // Add has-file class to icon
+            const iconContainer = this.querySelector('.upload-icon');
+            if (iconContainer) {
+                iconContainer.classList.add('has-file');
+            }
+            
+            console.log('Mock file added to regulatory document:', mockFile.name);
+        });
+    });
     // PI FDF Document Item Click Handler
     const piFdfItem = document.getElementById('pi-fdf-item');
     if (piFdfItem) {
@@ -2771,7 +2871,23 @@ function resetUploadModal() {
     const confirmBtn = document.getElementById('confirm-upload');
     const fileInput = document.getElementById('file-input');
     
-    if (uploadArea) uploadArea.classList.remove('has-file');
+    if (uploadArea) {
+        uploadArea.classList.remove('has-file');
+        
+        // Reset upload area text
+        const uploadText = uploadArea.querySelector('.upload-text-modal p:first-child');
+        if (uploadText) {
+            uploadText.textContent = 'Drag and drop your updated budget file here, or browse';
+        }
+        
+        // Reset icon to original upload icon
+        const uploadIcon = uploadArea.querySelector('.upload-icon-modal img');
+        if (uploadIcon) {
+            uploadIcon.src = './assets/34089f7cf686190c349d049f1a68a424621dc759.svg';
+            uploadIcon.alt = 'Upload';
+        }
+    }
+    
     if (progress) progress.style.display = 'none';
     if (success) success.style.display = 'none';
     if (confirmBtn) confirmBtn.disabled = true;
@@ -2827,9 +2943,83 @@ document.addEventListener('DOMContentLoaded', function() {
                 uploadText.textContent = `Selected: ${mockFile.name}`;
             }
             
+            // Change icon to checkbox
+            const uploadIcon = uploadArea.querySelector('.upload-icon-modal img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
             console.log('Mock file added via browse:', mockFile.name);
         });
     }
+
+    // Regulatory Documents Browse Links
+    const regulatoryBrowseLinks = document.querySelectorAll('.upload-link');
+    regulatoryBrowseLinks.forEach(browseLink => {
+        browseLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const uploadArea = this.closest('.upload-area');
+            if (!uploadArea) return;
+            
+            // Create mock file based on the document type
+            const documentTitle = uploadArea.closest('.document-upload-section')?.querySelector('.upload-title')?.textContent || 'Document';
+            let mockFileName = 'Document.pdf';
+            
+            if (documentTitle.includes('PI FDF')) {
+                mockFileName = 'PI_Financial_Disclosure_Form.pdf';
+            } else if (documentTitle.includes('Medical License')) {
+                mockFileName = 'Medical_License_and_CVs.pdf';
+            } else if (documentTitle.includes('Sub-Investigator')) {
+                mockFileName = 'Sub_Investigator_FDFs.pdf';
+            } else if (documentTitle.includes('Protocol Signature')) {
+                mockFileName = 'Protocol_Signature_Page.pdf';
+            } else if (documentTitle.includes('IB Acknowledgement')) {
+                mockFileName = 'IB_Acknowledgement.pdf';
+            } else if (documentTitle.includes('GCP Training')) {
+                mockFileName = 'GCP_Training_Certificates.pdf';
+            } else if (documentTitle.includes('Lab Certificates')) {
+                mockFileName = 'Lab_Certificates.pdf';
+            }
+            
+            const mockFile = {
+                name: mockFileName,
+                size: '1.2 MB',
+                type: 'application/pdf'
+            };
+            
+            selectedFile = mockFile;
+            uploadArea.classList.add('has-file');
+            
+            // Enable the upload button
+            const uploadBtn = uploadArea.closest('.document-upload-section')?.querySelector('.upload-btn');
+            if (uploadBtn) {
+                uploadBtn.disabled = false;
+            }
+            
+            // Update upload area text
+            const uploadText = uploadArea.querySelector('.upload-text p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            // Change icon to checkbox
+            const uploadIcon = uploadArea.querySelector('.upload-icon img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
+            // Add has-file class to icon
+            const iconContainer = uploadArea.querySelector('.upload-icon');
+            if (iconContainer) {
+                iconContainer.classList.add('has-file');
+            }
+            
+            console.log('Mock file added to regulatory document via browse:', mockFile.name);
+        });
+    });
 
     // File input change
     if (fileInput) {
@@ -2874,6 +3064,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 uploadText.textContent = `Selected: ${mockFile.name}`;
             }
             
+            // Change icon to checkbox
+            const uploadIcon = this.querySelector('.upload-icon-modal img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
             console.log('Mock file added:', mockFile.name);
         });
     }
@@ -2911,9 +3108,91 @@ document.addEventListener('DOMContentLoaded', function() {
                 uploadText.textContent = `Selected: ${mockFile.name}`;
             }
             
+            // Change icon to checkbox
+            const uploadIcon = this.querySelector('.upload-icon-modal img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
             console.log('Mock file added via drag and drop:', mockFile.name);
         });
     }
+
+    // Regulatory Documents Upload Areas Drag and Drop
+    const regulatoryUploadAreas = document.querySelectorAll('.upload-area');
+    regulatoryUploadAreas.forEach(uploadArea => {
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            
+            // Create mock file based on the document type
+            const documentTitle = this.closest('.document-upload-section')?.querySelector('.upload-title')?.textContent || 'Document';
+            let mockFileName = 'Document.pdf';
+            
+            if (documentTitle.includes('PI FDF')) {
+                mockFileName = 'PI_Financial_Disclosure_Form.pdf';
+            } else if (documentTitle.includes('Medical License')) {
+                mockFileName = 'Medical_License_and_CVs.pdf';
+            } else if (documentTitle.includes('Sub-Investigator')) {
+                mockFileName = 'Sub_Investigator_FDFs.pdf';
+            } else if (documentTitle.includes('Protocol Signature')) {
+                mockFileName = 'Protocol_Signature_Page.pdf';
+            } else if (documentTitle.includes('IB Acknowledgement')) {
+                mockFileName = 'IB_Acknowledgement.pdf';
+            } else if (documentTitle.includes('GCP Training')) {
+                mockFileName = 'GCP_Training_Certificates.pdf';
+            } else if (documentTitle.includes('Lab Certificates')) {
+                mockFileName = 'Lab_Certificates.pdf';
+            }
+            
+            const mockFile = {
+                name: mockFileName,
+                size: '1.2 MB',
+                type: 'application/pdf'
+            };
+            
+            selectedFile = mockFile;
+            this.classList.add('has-file');
+            
+            // Enable the upload button
+            const uploadBtn = this.closest('.document-upload-section')?.querySelector('.upload-btn');
+            if (uploadBtn) {
+                uploadBtn.disabled = false;
+            }
+            
+            // Update upload area text
+            const uploadText = this.querySelector('.upload-text p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            // Change icon to checkbox
+            const uploadIcon = this.querySelector('.upload-icon img');
+            if (uploadIcon) {
+                uploadIcon.src = './assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg';
+                uploadIcon.alt = 'File Selected';
+            }
+            
+            // Add has-file class to icon
+            const iconContainer = this.querySelector('.upload-icon');
+            if (iconContainer) {
+                iconContainer.classList.add('has-file');
+            }
+            
+            console.log('Mock file added to regulatory document via drag and drop:', mockFile.name);
+        });
+    });
 
     // Confirm upload
     if (confirmBtn) {

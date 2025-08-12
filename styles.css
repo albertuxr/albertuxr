@@ -2039,8 +2039,8 @@ body {
 }
 
 #point-of-contacts-sidesheet-container .close-btn svg {
-    width: 16px;
-    height: 16px;
+    /* width: 16px;
+    height: 16px; */
 }
 
 #point-of-contacts-sidesheet-container .sidesheet-content {
@@ -3256,6 +3256,11 @@ body {
 .upload-icon {
     margin-bottom: 16px;
     opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.upload-icon.has-file {
+    opacity: 1;
 }
 
 .upload-text {
