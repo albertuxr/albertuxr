@@ -732,14 +732,13 @@
                         </div>
                         
                         <div class="document-description">
-                            If changes to the document are required, click Update Document to upload a modified version of the document. You can click Edit Info to change the metadata that was already entered. The document will be automatically updated to reflect the changes.
+                            If changes to the document are required, click Upload Update to upload a modified version of the document. The document will be automatically updated to reflect the changes.
                         </div>
                         
                         <div class="document-actions">
                             <div class="action-buttons">
-                                <button class="action-btn primary">View Document</button>
-                                <button class="action-btn">Update Document</button>
-                                <button class="action-btn">Edit Info</button>
+                                <button class="action-btn primary">Download Document</button>
+                                <button class="action-btn">Upload Update</button>
                             </div>
                             <button class="approve-btn" id="approve-budget">
                                 Approve
@@ -759,7 +758,7 @@
                         </div>
                         
                         <div class="document-actions">
-                            <button class="action-btn primary">
+                            <button class="action-btn primary download">
                                 View Document
                                 <img src="./assets/chevron-right.svg" alt="Arrow" width="12" height="12">
                             </button>
@@ -1058,18 +1057,16 @@
                     </div>
 
                     <!-- PI FDF -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="pi-fdf-item" data-document="pi-fdf">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">PI FDF</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2025</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1083,18 +1080,16 @@
                     </div>
 
                     <!-- Signed Medical License and CVs -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="medical-license-cvs-item" data-document="medical-license-cvs">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">Signed Medical License and CVs</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2025</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1108,18 +1103,16 @@
                     </div>
 
                     <!-- Sub-Investigator FDFs -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="sub-investigator-fdfs-item" data-document="sub-investigator-fdfs">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">Sub-Investigator FDFs</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2025</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1133,18 +1126,16 @@
                     </div>
 
                     <!-- Protocol Signature Page -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="protocol-signature-item" data-document="protocol-signature">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">Protocol Signature Page</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2025</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1158,18 +1149,16 @@
                     </div>
 
                     <!-- IB Acknowledgement of Receipt -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="ib-acknowledgement-item" data-document="ib-acknowledgement">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">IB Acknowledgement of Receipt</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2024</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1183,18 +1172,16 @@
                     </div>
 
                     <!-- Site Staff GCP Training and IATA Training -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="gcp-training-item" data-document="gcp-training">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">Site Staff GCP Training and IATA Training</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2024</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1208,18 +1195,16 @@
                     </div>
 
                     <!-- Lab Certificates (Local Labs Only) -->
-                    <div class="regulatory-document-item">
+                    <div class="regulatory-document-item" id="lab-certificates-item" data-document="lab-certificates">
                         <div class="document-info">
                             <div class="document-icon">
-                                <img src="./assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg" alt="Completed" width="22" height="22">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Document" width="22" height="22">
                             </div>
                             <div class="document-details">
                                 <div class="document-title">Lab Certificates (Local Labs Only)</div>
-                                <div class="document-status completed">
-                                    <div class="status-badge">
-                                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
-                                        <span>Completed Sep 30, 2025</span>
-                                    </div>
+                                <div class="document-status pending">
+                                    <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                                    <span>Due Sep 30, 2025</span>
                                 </div>
                             </div>
                         </div>
@@ -1339,6 +1324,342 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PI FDF Document Sidesheet -->
+    <div id="pi-fdf-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="pi-fdf-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">PI FDF</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-pi-fdf-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload PI FDF</div>
+                            <div class="upload-subtitle">Please upload the completed Principal Investigator Financial Disclosure Form</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your file here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-pi-fdf-btn">
+                            Upload File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signed Medical License and CVs Document Sidesheet -->
+    <div id="medical-license-cvs-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="medical-license-cvs-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Signed Medical License and CVs</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-medical-license-cvs-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload Medical License and CVs</div>
+                            <div class="upload-subtitle">Please upload signed medical license and current CVs for all investigators</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your files here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB per file)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-medical-license-cvs-btn">
+                            Upload Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub-Investigator FDFs Document Sidesheet -->
+    <div id="sub-investigator-fdfs-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="sub-investigator-fdfs-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Sub-Investigator FDFs</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-sub-investigator-fdfs-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload Sub-Investigator FDFs</div>
+                            <div class="upload-subtitle">Please upload completed Financial Disclosure Forms for all sub-investigators</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your files here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB per file)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-sub-investigator-fdfs-btn">
+                            Upload Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protocol Signature Page Document Sidesheet -->
+    <div id="protocol-signature-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="protocol-signature-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Protocol Signature Page</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-protocol-signature-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload Protocol Signature Page</div>
+                            <div class="upload-subtitle">Please upload the signed protocol signature page</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your file here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-protocol-signature-btn">
+                            Upload File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IB Acknowledgement of Receipt Document Sidesheet -->
+    <div id="ib-acknowledgement-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="ib-acknowledgement-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">IB Acknowledgement of Receipt</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-ib-acknowledgement-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload IB Acknowledgement</div>
+                            <div class="upload-subtitle">Please upload the signed Investigator's Brochure acknowledgement of receipt</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your file here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-ib-acknowledgement-btn">
+                            Upload File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Staff GCP Training Document Sidesheet -->
+    <div id="gcp-training-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="gcp-training-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Site Staff GCP Training and IATA Training</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-gcp-training-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload GCP and IATA Training Certificates</div>
+                            <div class="upload-subtitle">Please upload GCP and IATA training certificates for all site staff</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your files here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB per file)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-gcp-training-btn">
+                            Upload Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lab Certificates Document Sidesheet -->
+    <div id="lab-certificates-sidesheet-overlay" class="sidesheet-overlay">
+        <div id="lab-certificates-sidesheet-container" class="sidesheet-container">
+            <!-- Sidesheet Header -->
+            <div class="sidesheet-header">
+                <div class="sidesheet-title">Lab Certificates (Local Labs Only)</div>
+                <div class="sidesheet-actions">
+                    <button class="close-button" id="close-lab-certificates-sidesheet">
+                        <div class="close-icon">
+                            <div class="close-line">
+                                <img src="./assets/b4fbc6262b9680afeb6f2d752f3c600e6b700138.svg" alt="Close">
+                            </div>
+                            <div class="close-line">
+                                <img src="./assets/e6aafe639b0011863a26707ebf11a545d5408b67.svg" alt="Close">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidesheet Content -->
+            <div class="sidesheet-content">
+                <div class="document-upload-section">
+                    <div class="upload-container">
+                        <div class="upload-header">
+                            <div class="upload-title">Upload Lab Certificates</div>
+                            <div class="upload-subtitle">Please upload current lab certificates and accreditations for local labs</div>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                            </div>
+                            <div class="upload-text">
+                                <p>Drag and drop your files here, or <span class="upload-link">browse</span></p>
+                                <p class="upload-hint">Supports: PDF, DOC, DOCX (Max 10MB per file)</p>
+                            </div>
+                        </div>
+                        
+                        <button class="upload-btn" id="upload-lab-certificates-btn">
+                            Upload Files
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1614,6 +1935,58 @@
     </div>
 
 
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Upload Update Modal -->
+    <div id="upload-update-modal" class="upload-modal-overlay">
+        <div class="upload-modal-container">
+            <div class="upload-modal-header">
+                <h3 class="upload-modal-title">Upload Budget Update</h3>
+                <button class="upload-modal-close" id="close-upload-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#343A40" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="upload-modal-content">
+                <div class="upload-area-modal">
+                    <div class="upload-icon-modal">
+                        <img src="./assets/34089f7cf686190c349d049f1a68a424621dc759.svg" alt="Upload" width="32" height="32">
+                    </div>
+                    <div class="upload-text-modal">
+                        <p>Drag and drop your updated budget file here, or <span class="upload-link-modal" id="browse-files">browse</span></p>
+                        <p class="upload-hint-modal">Supports: PDF, DOC, DOCX, XLS, XLSX (Max 10MB)</p>
+                    </div>
+                    <input type="file" id="file-input" accept=".pdf,.doc,.docx,.xls,.xlsx" style="display: none;">
+                </div>
+                
+                <div class="upload-progress" id="upload-progress" style="display: none;">
+                    <div class="progress-bar-upload">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">Uploading... <span id="progress-percentage">0%</span></div>
+                </div>
+                
+                <div class="upload-success" id="upload-success" style="display: none;">
+                    <div class="success-icon">
+                        <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Success" width="24" height="24">
+                    </div>
+                    <div class="success-text">
+                        <h4>Upload Successful!</h4>
+                        <p>Your budget update has been uploaded successfully.</p>
+                    </div>
+                </div>
+                
+                <div class="upload-modal-actions">
+                    <button class="upload-modal-btn secondary" id="cancel-upload">Cancel</button>
+                    <button class="upload-modal-btn primary" id="confirm-upload" disabled>Upload File</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

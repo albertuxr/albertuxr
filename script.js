@@ -2313,3 +2313,727 @@ function markSiteActivationTaskAsComplete() {
         console.log('Calling updateProgressTracker for site-activation-letter');
     }
 }
+
+// Document Upload Sidesheet Event Handlers
+document.addEventListener('DOMContentLoaded', function() {
+    // Download Document Button Click Handlers
+    const downloadButtons = document.querySelectorAll('.action-btn.primary');
+    downloadButtons.forEach(button => {
+        if (button.textContent.trim() === 'Download Document') {
+            button.addEventListener('click', function() {
+                console.log('Download Document button clicked');
+                showToast('Budget Downloaded', 'The budget document has been downloaded successfully.');
+            });
+        }
+    });
+
+    // Upload Update Button Click Handlers
+    const uploadUpdateButtons = document.querySelectorAll('.action-btn');
+    uploadUpdateButtons.forEach(button => {
+        if (button.textContent.trim() === 'Upload Update') {
+            button.addEventListener('click', function() {
+                console.log('Upload Update button clicked');
+                openUploadModal();
+            });
+        }
+    });
+    // PI FDF Document Item Click Handler
+    const piFdfItem = document.getElementById('pi-fdf-item');
+    if (piFdfItem) {
+        piFdfItem.addEventListener('click', function() {
+            console.log('PI FDF item clicked');
+            openPiFdfSidesheet();
+        });
+    }
+
+    // Medical License and CVs Document Item Click Handler
+    const medicalLicenseCvsItem = document.getElementById('medical-license-cvs-item');
+    if (medicalLicenseCvsItem) {
+        medicalLicenseCvsItem.addEventListener('click', function() {
+            console.log('Medical License and CVs item clicked');
+            openMedicalLicenseCvsSidesheet();
+        });
+    }
+
+    // Sub-Investigator FDFs Document Item Click Handler
+    const subInvestigatorFdfsItem = document.getElementById('sub-investigator-fdfs-item');
+    if (subInvestigatorFdfsItem) {
+        subInvestigatorFdfsItem.addEventListener('click', function() {
+            console.log('Sub-Investigator FDFs item clicked');
+            openSubInvestigatorFdfsSidesheet();
+        });
+    }
+
+    // Protocol Signature Page Document Item Click Handler
+    const protocolSignatureItem = document.getElementById('protocol-signature-item');
+    if (protocolSignatureItem) {
+        protocolSignatureItem.addEventListener('click', function() {
+            console.log('Protocol Signature Page item clicked');
+            openProtocolSignatureSidesheet();
+        });
+    }
+
+    // IB Acknowledgement Document Item Click Handler
+    const ibAcknowledgementItem = document.getElementById('ib-acknowledgement-item');
+    if (ibAcknowledgementItem) {
+        ibAcknowledgementItem.addEventListener('click', function() {
+            console.log('IB Acknowledgement item clicked');
+            openIbAcknowledgementSidesheet();
+        });
+    }
+
+    // GCP Training Document Item Click Handler
+    const gcpTrainingItem = document.getElementById('gcp-training-item');
+    if (gcpTrainingItem) {
+        gcpTrainingItem.addEventListener('click', function() {
+            console.log('GCP Training item clicked');
+            openGcpTrainingSidesheet();
+        });
+    }
+
+    // Lab Certificates Document Item Click Handler
+    const labCertificatesItem = document.getElementById('lab-certificates-item');
+    if (labCertificatesItem) {
+        labCertificatesItem.addEventListener('click', function() {
+            console.log('Lab Certificates item clicked');
+            openLabCertificatesSidesheet();
+        });
+    }
+
+    // Close buttons for all document upload sidesheets
+    const closeButtons = [
+        { id: 'close-pi-fdf-sidesheet', function: closePiFdfSidesheet },
+        { id: 'close-medical-license-cvs-sidesheet', function: closeMedicalLicenseCvsSidesheet },
+        { id: 'close-sub-investigator-fdfs-sidesheet', function: closeSubInvestigatorFdfsSidesheet },
+        { id: 'close-protocol-signature-sidesheet', function: closeProtocolSignatureSidesheet },
+        { id: 'close-ib-acknowledgement-sidesheet', function: closeIbAcknowledgementSidesheet },
+        { id: 'close-gcp-training-sidesheet', function: closeGcpTrainingSidesheet },
+        { id: 'close-lab-certificates-sidesheet', function: closeLabCertificatesSidesheet }
+    ];
+
+    closeButtons.forEach(button => {
+        const closeBtn = document.getElementById(button.id);
+        if (closeBtn) {
+            closeBtn.addEventListener('click', button.function);
+        }
+    });
+
+    // Overlay click handlers for all document upload sidesheets
+    const overlayHandlers = [
+        { id: 'pi-fdf-sidesheet-overlay', function: closePiFdfSidesheet },
+        { id: 'medical-license-cvs-sidesheet-overlay', function: closeMedicalLicenseCvsSidesheet },
+        { id: 'sub-investigator-fdfs-sidesheet-overlay', function: closeSubInvestigatorFdfsSidesheet },
+        { id: 'protocol-signature-sidesheet-overlay', function: closeProtocolSignatureSidesheet },
+        { id: 'ib-acknowledgement-sidesheet-overlay', function: closeIbAcknowledgementSidesheet },
+        { id: 'gcp-training-sidesheet-overlay', function: closeGcpTrainingSidesheet },
+        { id: 'lab-certificates-sidesheet-overlay', function: closeLabCertificatesSidesheet }
+    ];
+
+    overlayHandlers.forEach(handler => {
+        const overlay = document.getElementById(handler.id);
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    handler.function();
+                }
+            });
+        }
+    });
+
+    // Upload button handlers
+    const uploadButtons = [
+        { id: 'upload-pi-fdf-btn', function: handlePiFdfUpload },
+        { id: 'upload-medical-license-cvs-btn', function: handleMedicalLicenseCvsUpload },
+        { id: 'upload-sub-investigator-fdfs-btn', function: handleSubInvestigatorFdfsUpload },
+        { id: 'upload-protocol-signature-btn', function: handleProtocolSignatureUpload },
+        { id: 'upload-ib-acknowledgement-btn', function: handleIbAcknowledgementUpload },
+        { id: 'upload-gcp-training-btn', function: handleGcpTrainingUpload },
+        { id: 'upload-lab-certificates-btn', function: handleLabCertificatesUpload }
+    ];
+
+    uploadButtons.forEach(button => {
+        const uploadBtn = document.getElementById(button.id);
+        if (uploadBtn) {
+            uploadBtn.addEventListener('click', button.function);
+        }
+    });
+});
+
+// Open functions for document upload sidesheets
+function openPiFdfSidesheet() {
+    const sidesheet = document.getElementById('pi-fdf-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened PI FDF sidesheet');
+    }
+}
+
+function openMedicalLicenseCvsSidesheet() {
+    const sidesheet = document.getElementById('medical-license-cvs-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened Medical License and CVs sidesheet');
+    }
+}
+
+function openSubInvestigatorFdfsSidesheet() {
+    const sidesheet = document.getElementById('sub-investigator-fdfs-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened Sub-Investigator FDFs sidesheet');
+    }
+}
+
+function openProtocolSignatureSidesheet() {
+    const sidesheet = document.getElementById('protocol-signature-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened Protocol Signature Page sidesheet');
+    }
+}
+
+function openIbAcknowledgementSidesheet() {
+    const sidesheet = document.getElementById('ib-acknowledgement-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened IB Acknowledgement sidesheet');
+    }
+}
+
+function openGcpTrainingSidesheet() {
+    const sidesheet = document.getElementById('gcp-training-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened GCP Training sidesheet');
+    }
+}
+
+function openLabCertificatesSidesheet() {
+    const sidesheet = document.getElementById('lab-certificates-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Opened Lab Certificates sidesheet');
+    }
+}
+
+// Close functions for document upload sidesheets
+function closePiFdfSidesheet() {
+    const sidesheet = document.getElementById('pi-fdf-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed PI FDF sidesheet');
+    }
+}
+
+function closeMedicalLicenseCvsSidesheet() {
+    const sidesheet = document.getElementById('medical-license-cvs-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed Medical License and CVs sidesheet');
+    }
+}
+
+function closeSubInvestigatorFdfsSidesheet() {
+    const sidesheet = document.getElementById('sub-investigator-fdfs-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed Sub-Investigator FDFs sidesheet');
+    }
+}
+
+function closeProtocolSignatureSidesheet() {
+    const sidesheet = document.getElementById('protocol-signature-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed Protocol Signature Page sidesheet');
+    }
+}
+
+function closeIbAcknowledgementSidesheet() {
+    const sidesheet = document.getElementById('ib-acknowledgement-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed IB Acknowledgement sidesheet');
+    }
+}
+
+function closeGcpTrainingSidesheet() {
+    const sidesheet = document.getElementById('gcp-training-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed GCP Training sidesheet');
+    }
+}
+
+function closeLabCertificatesSidesheet() {
+    const sidesheet = document.getElementById('lab-certificates-sidesheet-overlay');
+    if (sidesheet) {
+        sidesheet.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Closed Lab Certificates sidesheet');
+    }
+}
+
+// Upload handler functions
+function handlePiFdfUpload() {
+    console.log('PI FDF upload initiated');
+    // Simulate file upload
+    simulateFileUpload('pi-fdf-item', 'PI FDF');
+}
+
+function handleMedicalLicenseCvsUpload() {
+    console.log('Medical License and CVs upload initiated');
+    // Simulate file upload
+    simulateFileUpload('medical-license-cvs-item', 'Signed Medical License and CVs');
+}
+
+function handleSubInvestigatorFdfsUpload() {
+    console.log('Sub-Investigator FDFs upload initiated');
+    // Simulate file upload
+    simulateFileUpload('sub-investigator-fdfs-item', 'Sub-Investigator FDFs');
+}
+
+function handleProtocolSignatureUpload() {
+    console.log('Protocol Signature Page upload initiated');
+    // Simulate file upload
+    simulateFileUpload('protocol-signature-item', 'Protocol Signature Page');
+}
+
+function handleIbAcknowledgementUpload() {
+    console.log('IB Acknowledgement upload initiated');
+    // Simulate file upload
+    simulateFileUpload('ib-acknowledgement-item', 'IB Acknowledgement of Receipt');
+}
+
+function handleGcpTrainingUpload() {
+    console.log('GCP Training upload initiated');
+    // Simulate file upload
+    simulateFileUpload('gcp-training-item', 'Site Staff GCP Training and IATA Training');
+}
+
+function handleLabCertificatesUpload() {
+    console.log('Lab Certificates upload initiated');
+    // Simulate file upload
+    simulateFileUpload('lab-certificates-item', 'Lab Certificates (Local Labs Only)');
+}
+
+// Generic file upload simulation function
+function simulateFileUpload(itemId, documentTitle) {
+    const item = document.getElementById(itemId);
+    if (item) {
+        // Update the document status to completed
+        const statusElement = item.querySelector('.document-status');
+        if (statusElement) {
+            statusElement.className = 'document-status completed';
+            statusElement.innerHTML = `
+                <div class="status-badge">
+                    <img src="./assets/2fd5f8d407e64971be64b8cac59706ee27a3b771.svg" alt="Check" width="16" height="16">
+                    <span>Completed Sep 30, 2025</span>
+                </div>
+            `;
+        }
+
+        // Update the document icon to completed
+        const iconElement = item.querySelector('.document-icon img');
+        if (iconElement) {
+            iconElement.src = './assets/bc64d3813d46a4c401f1483207e7f0e8e21ac561.svg';
+            iconElement.alt = 'Completed';
+        }
+
+        // Close the sidesheet
+        const sidesheetId = itemId.replace('-item', '-sidesheet-overlay');
+        const sidesheet = document.getElementById(sidesheetId);
+        if (sidesheet) {
+            sidesheet.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Update progress tracker
+        updateProgressTracker('regulatory-documents');
+
+        console.log(`${documentTitle} uploaded successfully`);
+    }
+}
+
+// Toast Notification Functions
+function showToast(title, message, type = 'success') {
+    const toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        console.error('Toast container not found');
+        return;
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.id = 'toast-' + Date.now();
+
+    // Set icon based on type
+    let iconSvg = '';
+    if (type === 'success') {
+        iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#40c057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    } else if (type === 'error') {
+        iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#fa5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    } else {
+        iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M13 16H12L9 13H4L2 15V7L4 5H9L12 2L13 3V16Z" stroke="#228be6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+
+    // Set toast content
+    toast.innerHTML = `
+        <div class="toast-icon">
+            ${iconSvg}
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="closeToast('${toast.id}')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    `;
+
+    // Add toast to container
+    toastContainer.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Auto-remove toast after 5 seconds
+    setTimeout(() => {
+        closeToast(toast.id);
+    }, 5000);
+
+    console.log('Toast notification shown:', title);
+}
+
+function closeToast(toastId) {
+    const toast = document.getElementById(toastId);
+    if (toast) {
+        toast.classList.add('hide');
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }
+}
+
+// Upload Modal Functions
+let selectedFile = null;
+
+function openUploadModal() {
+    const modal = document.getElementById('upload-update-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('Upload modal opened');
+    }
+}
+
+function closeUploadModal() {
+    const modal = document.getElementById('upload-update-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        resetUploadModal();
+        console.log('Upload modal closed');
+    }
+}
+
+function resetUploadModal() {
+    selectedFile = null;
+    const uploadArea = document.querySelector('.upload-area-modal');
+    const progress = document.getElementById('upload-progress');
+    const success = document.getElementById('upload-success');
+    const confirmBtn = document.getElementById('confirm-upload');
+    const fileInput = document.getElementById('file-input');
+    
+    if (uploadArea) uploadArea.classList.remove('has-file');
+    if (progress) progress.style.display = 'none';
+    if (success) success.style.display = 'none';
+    if (confirmBtn) confirmBtn.disabled = true;
+    if (fileInput) fileInput.value = '';
+}
+
+// Upload Modal Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('upload-update-modal');
+    const closeBtn = document.getElementById('close-upload-modal');
+    const cancelBtn = document.getElementById('cancel-upload');
+    const confirmBtn = document.getElementById('confirm-upload');
+    const browseBtn = document.getElementById('browse-files');
+    const fileInput = document.getElementById('file-input');
+    const uploadArea = document.querySelector('.upload-area-modal');
+
+    // Close modal when clicking overlay
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeUploadModal();
+            }
+        });
+    }
+
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeUploadModal);
+    }
+
+    // Cancel button
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeUploadModal);
+    }
+
+    // Browse files
+    if (browseBtn) {
+        browseBtn.addEventListener('click', function() {
+            // Create mock file instead of opening file picker
+            const mockFile = {
+                name: 'ArcadiaSiteBudgetV4.xls',
+                size: '2.4 MB',
+                type: 'application/vnd.ms-excel'
+            };
+            
+            selectedFile = mockFile;
+            uploadArea.classList.add('has-file');
+            confirmBtn.disabled = false;
+            
+            // Update upload area text
+            const uploadText = uploadArea.querySelector('.upload-text-modal p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            console.log('Mock file added via browse:', mockFile.name);
+        });
+    }
+
+    // File input change
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                selectedFile = file;
+                uploadArea.classList.add('has-file');
+                confirmBtn.disabled = false;
+                
+                // Update upload area text
+                const uploadText = uploadArea.querySelector('.upload-text-modal p:first-child');
+                if (uploadText) {
+                    uploadText.textContent = `Selected: ${file.name}`;
+                }
+            }
+        });
+    }
+
+    // Auto-add mock file when clicking upload area
+    if (uploadArea) {
+        uploadArea.addEventListener('click', function(e) {
+            // Don't trigger if clicking on the browse link
+            if (e.target.classList.contains('upload-link-modal')) {
+                return;
+            }
+            
+            // Create mock file
+            const mockFile = {
+                name: 'ArcadiaSiteBudgetV4.xls',
+                size: '2.4 MB',
+                type: 'application/vnd.ms-excel'
+            };
+            
+            selectedFile = mockFile;
+            this.classList.add('has-file');
+            confirmBtn.disabled = false;
+            
+            // Update upload area text
+            const uploadText = this.querySelector('.upload-text-modal p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            console.log('Mock file added:', mockFile.name);
+        });
+    }
+
+    // Drag and drop functionality
+    if (uploadArea) {
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            
+            // Create mock file instead of using actual dropped files
+            const mockFile = {
+                name: 'ArcadiaSiteBudgetV4.xls',
+                size: '2.4 MB',
+                type: 'application/vnd.ms-excel'
+            };
+            
+            selectedFile = mockFile;
+            this.classList.add('has-file');
+            confirmBtn.disabled = false;
+            
+            // Update upload area text
+            const uploadText = this.querySelector('.upload-text-modal p:first-child');
+            if (uploadText) {
+                uploadText.textContent = `Selected: ${mockFile.name}`;
+            }
+            
+            console.log('Mock file added via drag and drop:', mockFile.name);
+        });
+    }
+
+    // Confirm upload
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', function() {
+            if (selectedFile) {
+                simulateUpload();
+            }
+        });
+    }
+});
+
+function simulateUpload() {
+    const progress = document.getElementById('upload-progress');
+    const success = document.getElementById('upload-success');
+    const uploadArea = document.querySelector('.upload-area-modal');
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercentage = document.getElementById('progress-percentage');
+    const confirmBtn = document.getElementById('confirm-upload');
+
+    // Hide upload area and show progress
+    uploadArea.style.display = 'none';
+    progress.style.display = 'block';
+    confirmBtn.disabled = true;
+
+    // Simulate upload progress
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+        currentProgress += Math.random() * 15;
+        if (currentProgress > 100) currentProgress = 100;
+        
+        progressFill.style.width = currentProgress + '%';
+        progressPercentage.textContent = Math.round(currentProgress) + '%';
+        
+        if (currentProgress >= 100) {
+            clearInterval(interval);
+            
+            // Show success message
+            setTimeout(() => {
+                progress.style.display = 'none';
+                success.style.display = 'flex';
+                
+                // Update budget version and add comment
+                updateBudgetVersion();
+                addUploadComment();
+                
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    closeUploadModal();
+                    showToast('Budget Updated', 'Your budget has been updated to version v4 successfully.');
+                }, 2000);
+            }, 500);
+        }
+    }, 200);
+}
+
+function updateBudgetVersion() {
+    // Update the version badge from v3 to v4
+    const versionBadge = document.querySelector('.meta-badge');
+    if (versionBadge && versionBadge.textContent === 'v3') {
+        versionBadge.textContent = 'v4';
+    }
+    
+    // Update the last modified date
+    const metaDate = document.querySelector('.meta-date');
+    if (metaDate) {
+        const now = new Date();
+        const options = { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZoneName: 'short'
+        };
+        metaDate.textContent = `Last modified ${now.toLocaleDateString('en-US', options)}`;
+    }
+    
+    // Hide the approve button after upload
+    const approveBtn = document.getElementById('approve-budget');
+    if (approveBtn) {
+        approveBtn.style.display = 'none';
+        console.log('Approve button hidden after budget upload');
+    }
+}
+
+function addUploadComment() {
+    const activityFeed = document.getElementById('activity-feed');
+    if (activityFeed) {
+        const now = new Date();
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        const timeString = now.toLocaleDateString('en-US', options);
+        
+        const newComment = document.createElement('div');
+        newComment.className = 'activity-item';
+        newComment.innerHTML = `
+            <div class="activity-avatar">HW</div>
+            <div class="activity-content">
+                <div class="activity-header">
+                    <span class="activity-user">Herbert Wright</span>
+                    <span class="activity-action">uploaded</span>
+                    <span class="activity-document">Arcadia Site Budget v4</span>
+                    <span class="activity-time">${timeString}</span>
+                </div>
+                <div class="activity-text">
+                    New budget version uploaded
+                </div>
+                <div class="activity-file">
+                    <img src="./assets/667e3d9f36857ce2e0212ecdbccf6ac42e50cd9e.svg" alt="Excel" width="12" height="12">
+                    <span>ArcadiaSiteBudgetV4.xls</span>
+                </div>
+            </div>
+        `;
+        
+        // Insert at the top of the activity feed
+        activityFeed.insertBefore(newComment, activityFeed.firstChild);
+    }
+}
