@@ -2442,7 +2442,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (piFdfItem) {
         piFdfItem.addEventListener('click', function() {
             console.log('PI FDF item clicked');
-            openPiFdfSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('PI FDF', 'PI_Financial_Disclosure_Form.pdf');
+            } else {
+                openPiFdfSidesheet();
+            }
         });
     }
 
@@ -2451,7 +2455,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (medicalLicenseCvsItem) {
         medicalLicenseCvsItem.addEventListener('click', function() {
             console.log('Medical License and CVs item clicked');
-            openMedicalLicenseCvsSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('Signed Medical License and CVs', 'Medical_License_and_CVs.pdf');
+            } else {
+                openMedicalLicenseCvsSidesheet();
+            }
         });
     }
 
@@ -2460,7 +2468,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (subInvestigatorFdfsItem) {
         subInvestigatorFdfsItem.addEventListener('click', function() {
             console.log('Sub-Investigator FDFs item clicked');
-            openSubInvestigatorFdfsSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('Sub-Investigator FDFs', 'Sub_Investigator_FDFs.pdf');
+            } else {
+                openSubInvestigatorFdfsSidesheet();
+            }
         });
     }
 
@@ -2469,7 +2481,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (protocolSignatureItem) {
         protocolSignatureItem.addEventListener('click', function() {
             console.log('Protocol Signature Page item clicked');
-            openProtocolSignatureSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('Protocol Signature Page', 'Protocol_Signature_Page.pdf');
+            } else {
+                openProtocolSignatureSidesheet();
+            }
         });
     }
 
@@ -2478,7 +2494,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ibAcknowledgementItem) {
         ibAcknowledgementItem.addEventListener('click', function() {
             console.log('IB Acknowledgement item clicked');
-            openIbAcknowledgementSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('IB Acknowledgement of Receipt', 'IB_Acknowledgement.pdf');
+            } else {
+                openIbAcknowledgementSidesheet();
+            }
         });
     }
 
@@ -2487,7 +2507,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (gcpTrainingItem) {
         gcpTrainingItem.addEventListener('click', function() {
             console.log('GCP Training item clicked');
-            openGcpTrainingSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('Site Staff GCP Training and IATA Training', 'GCP_Training_Certificates.pdf');
+            } else {
+                openGcpTrainingSidesheet();
+            }
         });
     }
 
@@ -2496,7 +2520,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (labCertificatesItem) {
         labCertificatesItem.addEventListener('click', function() {
             console.log('Lab Certificates item clicked');
-            openLabCertificatesSidesheet();
+            if (isDocumentCompleted(this)) {
+                openDocumentViewer('Lab Certificates (Local Labs Only)', 'Lab_Certificates.pdf');
+            } else {
+                openLabCertificatesSidesheet();
+            }
         });
     }
 
@@ -2766,6 +2794,436 @@ function simulateFileUpload(itemId, documentTitle) {
 
         console.log(`${documentTitle} uploaded successfully`);
     }
+}
+
+// Helper function to check if a document is completed
+function isDocumentCompleted(documentItem) {
+    const statusElement = documentItem.querySelector('.document-status');
+    return statusElement && statusElement.classList.contains('completed');
+}
+
+// Function to generate mock document content
+function getMockDocumentContent(documentTitle, fileName) {
+    const documentType = documentTitle.toLowerCase();
+    
+    if (documentType.includes('pi fdf')) {
+        return `
+            <div class="mock-document pi-fdf">
+                <div class="document-header">
+                    <h2>PRINCIPAL INVESTIGATOR FINANCIAL DISCLOSURE FORM</h2>
+                    <div class="document-meta">
+                        <span class="version">Version 2.1</span>
+                        <span class="date">Date: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>1. INVESTIGATOR INFORMATION</h3>
+                        <div class="form-field">
+                            <label>Full Name:</label>
+                            <span>Dr. John Levinson</span>
+                        </div>
+                        <div class="form-field">
+                            <label>Institution:</label>
+                            <span>Downtown Clinical Research Center</span>
+                        </div>
+                        <div class="form-field">
+                            <label>Position:</label>
+                            <span>Principal Investigator</span>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>2. FINANCIAL INTERESTS</h3>
+                        <div class="form-field">
+                            <label>Do you have any financial interests in the sponsor?</label>
+                            <span>No</span>
+                        </div>
+                        <div class="form-field">
+                            <label>Do you own stock in the sponsor?</label>
+                            <span>No</span>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>3. SIGNATURE</h3>
+                        <div class="signature-line">
+                            <span>Dr. John Levinson</span>
+                            <span class="date">${new Date().toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (documentType.includes('medical license')) {
+        return `
+            <div class="mock-document medical-license">
+                <div class="document-header">
+                    <h2>MEDICAL LICENSE AND CURRICULUM VITAE</h2>
+                    <div class="document-meta">
+                        <span class="institution">Downtown Clinical Research Center</span>
+                        <span class="date">Updated: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>MEDICAL LICENSE</h3>
+                        <div class="license-info">
+                            <div class="form-field">
+                                <label>License Number:</label>
+                                <span>MD-123456</span>
+                            </div>
+                            <div class="form-field">
+                                <label>State:</label>
+                                <span>California</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Expiration Date:</label>
+                                <span>December 31, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>CURRICULUM VITAE</h3>
+                        <div class="cv-content">
+                            <h4>Education</h4>
+                            <p>MD - Stanford University School of Medicine (2010)</p>
+                            <p>Residency - Internal Medicine, UCSF Medical Center (2010-2013)</p>
+                            
+                            <h4>Experience</h4>
+                            <p>Principal Investigator - Downtown Clinical Research Center (2015-Present)</p>
+                            <p>Clinical Research Experience: 15+ years</p>
+                            
+                            <h4>Certifications</h4>
+                            <p>Board Certified in Internal Medicine</p>
+                            <p>GCP Certified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (documentType.includes('protocol signature')) {
+        return `
+            <div class="mock-document protocol-signature">
+                <div class="document-header">
+                    <h2>PROTOCOL SIGNATURE PAGE</h2>
+                    <div class="document-meta">
+                        <span class="protocol">Protocol: ARC-2024-001</span>
+                        <span class="date">Date: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>PROTOCOL ACKNOWLEDGMENT</h3>
+                        <p class="acknowledgment">
+                            I acknowledge that I have received, read, and understood the protocol 
+                            "A Phase 3 Study of Investigational Drug in Type 2 Diabetes Patients" 
+                            and agree to conduct the study in accordance with the protocol, 
+                            applicable regulations, and institutional policies.
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h3>INVESTIGATOR SIGNATURE</h3>
+                        <div class="signature-block">
+                            <div class="signature-line">
+                                <label>Principal Investigator:</label>
+                                <span>Dr. John Levinson</span>
+                            </div>
+                            <div class="signature-line">
+                                <label>Date:</label>
+                                <span>${new Date().toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>INSTITUTIONAL APPROVAL</h3>
+                        <div class="approval-info">
+                            <div class="form-field">
+                                <label>IRB Approval Date:</label>
+                                <span>January 15, 2024</span>
+                            </div>
+                            <div class="form-field">
+                                <label>IRB Number:</label>
+                                <span>IRB-2024-001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (documentType.includes('ib acknowledgement')) {
+        return `
+            <div class="mock-document ib-acknowledgment">
+                <div class="document-header">
+                    <h2>INVESTIGATOR'S BROCHURE ACKNOWLEDGMENT</h2>
+                    <div class="document-meta">
+                        <span class="version">IB Version 3.2</span>
+                        <span class="date">Date: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>ACKNOWLEDGMENT STATEMENT</h3>
+                        <p class="acknowledgment">
+                            I acknowledge that I have received the Investigator's Brochure for 
+                            the investigational drug and understand that it contains important 
+                            safety information and clinical data that I must review before 
+                            conducting the study.
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h3>INVESTIGATOR INFORMATION</h3>
+                        <div class="investigator-info">
+                            <div class="form-field">
+                                <label>Name:</label>
+                                <span>Dr. John Levinson</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Institution:</label>
+                                <span>Downtown Clinical Research Center</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Study Role:</label>
+                                <span>Principal Investigator</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>SIGNATURE</h3>
+                        <div class="signature-block">
+                            <div class="signature-line">
+                                <span>Dr. John Levinson</span>
+                                <span class="date">${new Date().toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (documentType.includes('gcp training')) {
+        return `
+            <div class="mock-document gcp-training">
+                <div class="document-header">
+                    <h2>GCP AND IATA TRAINING CERTIFICATES</h2>
+                    <div class="document-meta">
+                        <span class="institution">Downtown Clinical Research Center</span>
+                        <span class="date">Updated: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>GOOD CLINICAL PRACTICE (GCP) TRAINING</h3>
+                        <div class="certificate-info">
+                            <div class="form-field">
+                                <label>Training Provider:</label>
+                                <span>NIH Clinical Center</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Completion Date:</label>
+                                <span>March 15, 2024</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Expiration Date:</label>
+                                <span>March 15, 2027</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Certificate Number:</label>
+                                <span>GCP-2024-001</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>IATA DANGEROUS GOODS TRAINING</h3>
+                        <div class="certificate-info">
+                            <div class="form-field">
+                                <label>Training Provider:</label>
+                                <span>IATA Training Institute</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Completion Date:</label>
+                                <span>February 20, 2024</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Expiration Date:</label>
+                                <span>February 20, 2026</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Certificate Number:</label>
+                                <span>IATA-2024-002</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (documentType.includes('lab certificates')) {
+        return `
+            <div class="mock-document lab-certificates">
+                <div class="document-header">
+                    <h2>LABORATORY CERTIFICATES AND ACCREDITATIONS</h2>
+                    <div class="document-meta">
+                        <span class="institution">Downtown Clinical Research Center</span>
+                        <span class="date">Updated: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>CLIA CERTIFICATION</h3>
+                        <div class="certificate-info">
+                            <div class="form-field">
+                                <label>CLIA Number:</label>
+                                <span>05D1234567</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Certification Date:</label>
+                                <span>January 10, 2024</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Expiration Date:</label>
+                                <span>January 10, 2026</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Laboratory Director:</label>
+                                <span>Dr. Sarah Johnson</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3>CAP ACCREDITATION</h3>
+                        <div class="certificate-info">
+                            <div class="form-field">
+                                <label>CAP Number:</label>
+                                <span>CAP-123456</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Accreditation Date:</label>
+                                <span>December 5, 2023</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Next Inspection:</label>
+                                <span>December 5, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        // Default generic document
+        return `
+            <div class="mock-document generic">
+                <div class="document-header">
+                    <h2>${documentTitle.toUpperCase()}</h2>
+                    <div class="document-meta">
+                        <span class="filename">${fileName}</span>
+                        <span class="date">Date: ${new Date().toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div class="section">
+                        <h3>DOCUMENT CONTENT</h3>
+                        <p>This document contains the required information for ${documentTitle}.</p>
+                        <p>The document has been reviewed and approved by the appropriate authorities.</p>
+                    </div>
+                    <div class="section">
+                        <h3>APPROVAL</h3>
+                        <div class="approval-info">
+                            <div class="form-field">
+                                <label>Status:</label>
+                                <span>Approved</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Date:</label>
+                                <span>${new Date().toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Function to open document viewer for completed documents
+function openDocumentViewer(documentTitle, fileName) {
+    console.log(`Opening document viewer for: ${documentTitle}`);
+    
+    // Get mock document content based on document type
+    const mockContent = getMockDocumentContent(documentTitle, fileName);
+    
+    // Create a document viewer modal with mock content
+    const viewerHTML = `
+        <div id="document-viewer-overlay" class="document-viewer-overlay">
+            <div class="document-viewer-container">
+                <div class="document-viewer-header">
+                    <h3 class="document-viewer-title">${documentTitle}</h3>
+                    <button class="document-viewer-close" id="close-document-viewer">
+                        <img src="./assets/x_close.svg" alt="Close" width="24" height="24">
+                    </button>
+                </div>
+                <div class="document-viewer-content">
+                    <div class="document-preview-area">
+                        <div class="document-preview-content">
+                            ${mockContent}
+                        </div>
+                    </div>
+                    <div class="document-viewer-actions">
+                        <button class="document-viewer-btn primary" onclick="downloadDocument('${fileName}')">
+                            Download Document
+                        </button>
+                        <button class="document-viewer-btn secondary" onclick="closeDocumentViewer()">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add the viewer to the page
+    document.body.insertAdjacentHTML('beforeend', viewerHTML);
+    
+    // Show the viewer
+    const viewer = document.getElementById('document-viewer-overlay');
+    if (viewer) {
+        viewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Add close event listener
+    const closeBtn = document.getElementById('close-document-viewer');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeDocumentViewer);
+    }
+    
+    // Close on overlay click
+    if (viewer) {
+        viewer.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDocumentViewer();
+            }
+        });
+    }
+}
+
+// Function to close document viewer
+function closeDocumentViewer() {
+    const viewer = document.getElementById('document-viewer-overlay');
+    if (viewer) {
+        viewer.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Remove the viewer from DOM after animation
+        setTimeout(() => {
+            if (viewer.parentNode) {
+                viewer.parentNode.removeChild(viewer);
+            }
+        }, 300);
+    }
+}
+
+// Function to simulate document download
+function downloadDocument(fileName) {
+    console.log(`Downloading: ${fileName}`);
+    showToast('Document Downloaded', `${fileName} has been downloaded successfully.`);
 }
 
 // Toast Notification Functions

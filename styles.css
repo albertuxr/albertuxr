@@ -3724,6 +3724,320 @@ body {
     }
 }
 
+/* Document Viewer Styles */
+.document-viewer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.document-viewer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.document-viewer-container {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.document-viewer-overlay.active .document-viewer-container {
+    transform: scale(1);
+}
+
+.document-viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 0 24px;
+    border-bottom: 1px solid #e6ebeb;
+    padding-bottom: 16px;
+}
+
+.document-viewer-title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #343A40;
+    margin: 0;
+}
+
+.document-viewer-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.document-viewer-close:hover {
+    background: #f8f9fa;
+}
+
+.document-viewer-content {
+    padding: 24px;
+}
+
+.document-preview-area {
+    min-height: 400px;
+    border: 1px solid #e6ebeb;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    background: #ffffff;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.document-preview-content {
+    padding: 20px;
+}
+
+/* Mock Document Styles */
+.mock-document {
+    font-family: 'Open Sans', sans-serif;
+    color: #343A40;
+    line-height: 1.6;
+}
+
+.mock-document .document-header {
+    border-bottom: 2px solid #228be6;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.mock-document .document-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #228be6;
+    margin: 0 0 8px 0;
+    text-align: center;
+}
+
+.mock-document .document-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #868e96;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mock-document .document-meta span {
+    background: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+}
+
+.mock-document .document-body {
+    padding: 0;
+}
+
+.mock-document .section {
+    margin-bottom: 24px;
+}
+
+.mock-document .section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin: 0 0 12px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.mock-document .section h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+    margin: 16px 0 8px 0;
+}
+
+.mock-document .form-field {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: baseline;
+}
+
+.mock-document .form-field label {
+    font-weight: 600;
+    color: #495057;
+    min-width: 140px;
+    font-size: 12px;
+}
+
+.mock-document .form-field span {
+    color: #343A40;
+    font-size: 12px;
+}
+
+.mock-document .acknowledgment {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #495057;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid #228be6;
+    margin: 0;
+}
+
+.mock-document .signature-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e9ecef;
+}
+
+.mock-document .signature-line span {
+    font-weight: 600;
+    color: #495057;
+    font-size: 12px;
+}
+
+.mock-document .signature-line .date {
+    color: #868e96;
+    font-weight: normal;
+}
+
+.mock-document .signature-block {
+    margin-top: 16px;
+}
+
+.mock-document .approval-info {
+    background: #f8fff9;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d3f2d3;
+}
+
+.mock-document .license-info,
+.mock-document .certificate-info,
+.mock-document .investigator-info {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.mock-document .cv-content p {
+    font-size: 12px;
+    margin: 4px 0;
+    color: #495057;
+}
+
+/* Document type specific styles */
+.mock-document.pi-fdf .document-header h2 {
+    color: #228be6;
+}
+
+.mock-document.medical-license .document-header h2 {
+    color: #40c057;
+}
+
+.mock-document.protocol-signature .document-header h2 {
+    color: #fd7e14;
+}
+
+.mock-document.ib-acknowledgment .document-header h2 {
+    color: #6f42c1;
+}
+
+.mock-document.gcp-training .document-header h2 {
+    color: #20c997;
+}
+
+.mock-document.lab-certificates .document-header h2 {
+    color: #dc3545;
+}
+
+.document-viewer-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.document-viewer-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.document-viewer-btn.primary {
+    background: #228be6;
+    color: #ffffff;
+}
+
+.document-viewer-btn.primary:hover {
+    background: #1c7ed6;
+}
+
+.document-viewer-btn.secondary {
+    background: #ffffff;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+.document-viewer-btn.secondary:hover {
+    background: #f8f9fa;
+}
+
+/* Responsive design for document viewer */
+@media (max-width: 768px) {
+    .document-viewer-container {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .document-viewer-header {
+        padding: 16px 16px 0 16px;
+    }
+    
+    .document-viewer-content {
+        padding: 16px;
+    }
+    
+    .document-viewer-actions {
+        flex-direction: column;
+    }
+    
+    .document-viewer-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 
 
 
