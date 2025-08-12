@@ -370,38 +370,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Form 1572 status updated to completed');
         }
 
-        // Mark the regulatory documents task as completed
-        const regulatoryDocumentsTask = document.querySelector('[data-task="regulatory-documents"]');
-        if (regulatoryDocumentsTask) {
-            // Check if all regulatory documents are completed
-            const allRegulatoryDocuments = document.querySelectorAll('#regulatory-documents-sidesheet-container .regulatory-document-item');
-            const completedDocuments = document.querySelectorAll('#regulatory-documents-sidesheet-container .regulatory-document-item .document-status.completed');
-            
-            if (allRegulatoryDocuments.length > 0 && completedDocuments.length === allRegulatoryDocuments.length) {
-                // All regulatory documents are completed, mark the task as complete
-                regulatoryDocumentsTask.classList.remove('pending');
-                regulatoryDocumentsTask.classList.add('completed');
-                
-                const taskStatusElement = regulatoryDocumentsTask.querySelector('.task-status');
-                if (taskStatusElement) {
-                    taskStatusElement.classList.remove('pending');
-                    taskStatusElement.classList.add('completed');
-                    taskStatusElement.innerHTML = `
-                        <span>Completed</span>
-                        <img src="./assets/8e8269db2fe8c646c1ed0be85c00cd2ee71a1a50.svg" alt="Completed" width="18" height="18">
-                    `;
-                }
-                
-                // Update progress tracker
-                updateProgressTracker('regulatory-documents');
-                
-                console.log('Regulatory documents task marked as completed');
-            } else {
-                console.log('Not all regulatory documents are completed yet');
-            }
-        } else {
-            console.log('Regulatory documents task not found');
-        }
+        // Check if all regulatory documents are completed
+        checkRegulatoryDocumentsCompletion();
     }
     
     // Function to mark task as complete
@@ -2793,7 +2763,141 @@ function simulateFileUpload(itemId, documentTitle) {
         updateProgressTracker('regulatory-documents');
 
         console.log(`${documentTitle} uploaded successfully`);
+        
+        // Check if all regulatory documents are completed
+        checkRegulatoryDocumentsCompletion();
     }
+}
+
+// Function to check if all regulatory documents are completed
+function checkRegulatoryDocumentsCompletion() {
+    console.log('Checking regulatory documents completion status...');
+    
+    // Get all regulatory document items
+    const regulatoryDocumentItems = [
+        'form-1572-item',
+        'pi-fdf-item',
+        'medical-license-cvs-item',
+        'sub-investigator-fdfs-item',
+        'protocol-signature-item',
+        'ib-acknowledgement-item',
+        'gcp-training-item',
+        'lab-certificates-item'
+    ];
+    
+    // Check if all documents are completed
+    const allCompleted = regulatoryDocumentItems.every(itemId => {
+        const item = document.getElementById(itemId);
+        if (item) {
+            const statusElement = item.querySelector('.document-status');
+            const isCompleted = statusElement && statusElement.classList.contains('completed');
+            console.log(`Document ${itemId}: ${isCompleted ? 'COMPLETED' : 'PENDING'}`);
+            return isCompleted;
+        }
+        console.log(`Document ${itemId}: NOT FOUND`);
+        return false;
+    });
+    
+    console.log(`All regulatory documents completed: ${allCompleted}`);
+    
+    // If all are completed, mark the main regulatory documents task as completed
+    if (allCompleted) {
+        markRegulatoryDocumentsTaskCompleted();
+    }
+}
+
+// Function to mark the main regulatory documents task as completed
+function markRegulatoryDocumentsTaskCompleted() {
+    console.log('Marking main regulatory documents task as completed...');
+    
+    // Find the main regulatory documents task
+    const regulatoryTask = document.querySelector('.task-card[data-task="regulatory-documents"]');
+    if (regulatoryTask) {
+        // Update task card class
+        regulatoryTask.classList.remove('pending');
+        regulatoryTask.classList.add('completed');
+        
+        // Update progress tracker to reflect the completion
+        updateProgressTracker('regulatory-documents');
+        
+        // Debug: Check the current state
+        console.log('=== DEBUG: After marking regulatory documents as completed ===');
+        const docCollectionSection = document.querySelector('[data-section="doc-collection"]');
+        if (docCollectionSection) {
+            const completedTasks = document.querySelectorAll('.task-card[data-section="doc-collection"].completed');
+            const totalTasks = document.querySelectorAll('.task-card[data-section="doc-collection"]');
+            console.log(`Doc Collection: ${completedTasks.length}/${totalTasks.length} tasks completed`);
+            
+            const progressBadge = docCollectionSection.querySelector('.progress-badge span');
+            if (progressBadge) {
+                console.log(`Progress badge text: ${progressBadge.textContent}`);
+            }
+        }
+        
+        // Update task status
+        const taskStatus = regulatoryTask.querySelector('.task-status');
+        if (taskStatus) {
+            taskStatus.classList.remove('pending');
+            taskStatus.classList.add('completed');
+            taskStatus.innerHTML = `
+                <span>Completed</span>
+                <img src="./assets/8e8269db2fe8c646c1ed0be85c00cd2ee71a1a50.svg" alt="Completed" width="18" height="18">
+            `;
+        }
+        
+
+        
+        console.log('Main regulatory documents task marked as completed');
+        
+        // Show a toast notification
+        showToast('Regulatory Documents Complete', 'All regulatory documents have been uploaded and approved!', 'success');
+    } else {
+        console.log('ERROR: Could not find main regulatory documents task');
+    }
+}
+
+// Debug function to manually check completion status
+function debugRegulatoryDocumentsStatus() {
+    console.log('=== DEBUG: Checking Regulatory Documents Status ===');
+    
+    const regulatoryDocumentItems = [
+        'form-1572-item',
+        'pi-fdf-item',
+        'medical-license-cvs-item',
+        'sub-investigator-fdfs-item',
+        'protocol-signature-item',
+        'ib-acknowledgement-item',
+        'gcp-training-item',
+        'lab-certificates-item'
+    ];
+    
+    regulatoryDocumentItems.forEach(itemId => {
+        const item = document.getElementById(itemId);
+        if (item) {
+            const statusElement = item.querySelector('.document-status');
+            const isCompleted = statusElement && statusElement.classList.contains('completed');
+            console.log(`${itemId}: ${isCompleted ? '✅ COMPLETED' : '❌ PENDING'}`);
+            
+            if (statusElement) {
+                console.log(`  - Classes: ${statusElement.className}`);
+                console.log(`  - HTML: ${statusElement.innerHTML.substring(0, 100)}...`);
+            } else {
+                console.log(`  - Status element not found`);
+            }
+        } else {
+            console.log(`${itemId}: ❌ NOT FOUND`);
+        }
+    });
+    
+    // Check main task
+    const mainTask = document.querySelector('.task-card[data-task="regulatory-documents"]');
+    if (mainTask) {
+        console.log(`Main task found: ${mainTask.classList.contains('completed') ? '✅ COMPLETED' : '❌ PENDING'}`);
+    } else {
+        console.log('Main task not found');
+    }
+    
+    console.log('=== END DEBUG ===');
 }
 
 // Helper function to check if a document is completed
