@@ -4165,6 +4165,12 @@ function updateBudgetVersion() {
         approveBtn.style.display = 'none';
         console.log('Approve button hidden after budget upload');
     }
+
+    // Show 'sent for review' status
+    const reviewChip = document.getElementById('budget-review-chip');
+    if (reviewChip) {
+        reviewChip.style.display = 'inline-flex';
+    }
 }
 
 function addUploadComment() {

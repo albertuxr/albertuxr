@@ -1754,12 +1754,25 @@ body {
 }
 
 .document-status {
-    /* width: 30px; */
-    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
+    min-height: 30px;
     flex-shrink: 0;
+}
+
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #855d00;
+    background: #fff3e0;
+    border: 1px solid #ffcc02;
+    border-radius: 16px;
 }
 
 .document-meta {
