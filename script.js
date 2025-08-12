@@ -395,6 +395,17 @@ document.addEventListener('DOMContentLoaded', function() {
             updateProgressTracker(taskType);
             
             console.log(`Task ${taskType} marked as complete`);
+
+            // Update Action Items UI immediately
+            try {
+                updateActionItemsBadge();
+                const panel = document.getElementById('action-items-panel');
+                if (panel && panel.classList.contains('active')) {
+                    updateActionItemsPanel();
+                }
+            } catch (e) {
+                // no-op if helpers are not defined yet
+            }
         }
     }
     
@@ -993,9 +1004,129 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (actionItems) {
         actionItems.addEventListener('click', function() {
-            // You can add action items panel logic here
+            // Toggle action items panel
+            toggleActionItemsPanel();
             console.log('Action items clicked');
         });
+    }
+    
+    // Function to toggle action items panel
+    function toggleActionItemsPanel() {
+        let actionItemsPanel = document.getElementById('action-items-panel');
+        
+        if (!actionItemsPanel) {
+            // Create the panel if it doesn't exist
+            actionItemsPanel = document.createElement('div');
+            actionItemsPanel.id = 'action-items-panel';
+            actionItemsPanel.className = 'action-items-panel';
+            actionItemsPanel.innerHTML = `
+                <div class="action-items-header">
+                    <h3>Action Items</h3>
+                    <button class="close-action-items" onclick="toggleActionItemsPanel()">
+                        <img src="./assets/x_close.svg" alt="Close" width="16" height="16">
+                    </button>
+                </div>
+                <div class="action-items-content"></div>
+            `;
+            document.body.appendChild(actionItemsPanel);
+
+            // Build initial content from current urgent tasks
+            updateActionItemsPanel();
+
+            // Close button handler
+            const closeBtn = actionItemsPanel.querySelector('.close-action-items');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    actionItemsPanel.classList.remove('active');
+                });
+            }
+        }
+        
+        // Toggle visibility
+        if (actionItemsPanel.classList.contains('active')) {
+            actionItemsPanel.classList.remove('active');
+        } else {
+            // Refresh content each time it opens
+            updateActionItemsPanel();
+            actionItemsPanel.classList.add('active');
+        }
+    }
+
+    // Helper: get urgent, visible, not-completed task cards used for panel and badge
+    function getVisibleUrgentTaskCards() {
+        return Array.from(document.querySelectorAll('.task-card[data-due-date]'))
+            .filter(card => !card.classList.contains('completed'))
+            .filter(card => (card.classList.contains('overdue') || card.classList.contains('due-soon')))
+            .filter(card => card.getAttribute('data-task') !== 'regulatory-documents');
+    }
+
+    // Helper: update the Action Items badge based on current urgent tasks
+    function updateActionItemsBadge() {
+        const actionItemsBadge = document.querySelector('.action-items .badge');
+        if (!actionItemsBadge) return;
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            // If panel is open, count items actually shown (with data-task)
+            const shownItems = panel.querySelectorAll('.action-items-content .action-item[data-task]').length;
+            actionItemsBadge.textContent = String(shownItems);
+        } else {
+            // If panel is closed (or not created), compute from urgent list
+            const count = getVisibleUrgentTaskCards().length;
+            actionItemsBadge.textContent = String(count);
+        }
+    }
+
+    // Helper to rebuild Action Items content from current urgent tasks
+    function updateActionItemsPanel() {
+        const panel = document.getElementById('action-items-panel');
+        if (!panel) return;
+        const content = panel.querySelector('.action-items-content');
+        if (!content) return;
+
+        // Collect urgent, not-completed tasks (exclude Regulatory Documents)
+        const cards = getVisibleUrgentTaskCards();
+
+        // Build items
+        if (cards.length === 0) {
+            content.innerHTML = `<div class="action-item" style="padding:16px;">No action items</div>`;
+        } else {
+            content.innerHTML = cards.map(card => {
+                const taskType = card.getAttribute('data-task') || '';
+                const title = (card.querySelector('.task-title')?.textContent || '').trim();
+                const desc = (card.querySelector('.task-description')?.textContent || '').trim();
+                const statusEl = card.querySelector('.task-status');
+                const dueText = statusEl ? (statusEl.textContent || '').trim() : '';
+                const urgencyClass = card.classList.contains('overdue') ? 'overdue' : 'due-soon';
+                return `
+                    <div class="action-item ${urgencyClass}" data-task="${taskType}">
+                        <div class="action-item-icon ${urgencyClass}">
+                            <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
+                        </div>
+                        <div class="action-item-content">
+                            <h4>${title}</h4>
+                            ${desc ? `<p>${desc}</p>` : ''}
+                            <span class="due-date ${urgencyClass}">${dueText}</span>
+                        </div>
+                        <div class="action-item-status ${urgencyClass}">${urgencyClass === 'overdue' ? 'Overdue' : 'Due Soon'}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Bind click handlers to open sidesheets and close panel
+        panel.querySelectorAll('.action-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const taskType = item.getAttribute('data-task');
+                panel.classList.remove('active');
+                if (taskType) {
+                    openSidesheet(taskType);
+                }
+            });
+        });
+
+        // Update badge whenever we rebuild the panel
+        updateActionItemsBadge();
     }
 
     // Avatar functionality
@@ -1026,7 +1157,130 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             document.body.style.opacity = '1';
         }, 100);
+        
+        // Check for urgent tasks and show notifications
+        checkUrgentTasks();
     });
+    
+    // Function to check for urgent tasks
+    function checkUrgentTasks() {
+        const urgentTasks = document.querySelectorAll('.task-card[data-due-date]');
+        const today = new Date();
+        const urgentTaskNotifications = [];
+        
+        urgentTasks.forEach(task => {
+            const dueDate = new Date(task.getAttribute('data-due-date'));
+            const daysUntilDue = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
+            const taskKey = task.getAttribute('data-task') || '';
+            
+            // Remove existing urgency classes
+            task.classList.remove('overdue', 'due-soon');
+            const statusElement = task.querySelector('.task-status');
+            if (statusElement) {
+                statusElement.classList.remove('overdue', 'due-soon');
+            }
+            
+            if (daysUntilDue < 0) {
+                // Task is overdue
+                const taskTitle = task.querySelector('.task-title').textContent;
+                const daysOverdue = Math.abs(daysUntilDue);
+                const urgency = daysOverdue === 1 ? '1 day overdue' : `${daysOverdue} days overdue`;
+                
+                // Exclude Regulatory Documents from notifications
+                if (taskKey !== 'regulatory-documents') {
+                    urgentTaskNotifications.push({
+                        title: taskTitle,
+                        urgency: urgency,
+                        daysUntilDue: daysUntilDue,
+                        type: 'overdue'
+                    });
+                }
+                
+                // Add overdue class
+                task.classList.add('overdue');
+                if (statusElement) {
+                    statusElement.classList.add('overdue');
+                }
+            } else if (daysUntilDue <= 7) {
+                // Task is due within 7 days
+                const taskTitle = task.querySelector('.task-title').textContent;
+                const urgency = daysUntilDue === 0 ? 'TODAY' : 
+                               daysUntilDue === 1 ? 'TOMORROW' : 
+                               `${daysUntilDue} days`;
+                
+                // Exclude Regulatory Documents from notifications
+                if (taskKey !== 'regulatory-documents') {
+                    urgentTaskNotifications.push({
+                        title: taskTitle,
+                        urgency: urgency,
+                        daysUntilDue: daysUntilDue,
+                        type: 'due-soon'
+                    });
+                }
+                
+                // Add due-soon class
+                task.classList.add('due-soon');
+                if (statusElement) {
+                    statusElement.classList.add('due-soon');
+                }
+            }
+        });
+        
+        // Ensure Point of Contacts is always shown as due soon (orange)
+        const pointOfContactsTask = document.querySelector('.task-card[data-task="point-of-contacts"]');
+        if (pointOfContactsTask) {
+            pointOfContactsTask.classList.add('due-soon');
+            const pocStatus = pointOfContactsTask.querySelector('.task-status');
+            if (pocStatus) {
+                pocStatus.classList.add('due-soon');
+            }
+            // Also ensure a due-soon notification is created for Point of Contacts
+            const pocTitleEl = pointOfContactsTask.querySelector('.task-title');
+            const pocTitle = pocTitleEl ? pocTitleEl.textContent : 'Point of Contacts';
+            const pocDueDateAttr = pointOfContactsTask.getAttribute('data-due-date');
+            if (pocDueDateAttr) {
+                const pocDueDate = new Date(pocDueDateAttr);
+                const daysUntilPoc = Math.ceil((pocDueDate - today) / (1000 * 60 * 60 * 24));
+                const pocUrgency = daysUntilPoc === 0 ? 'TODAY' :
+                                   daysUntilPoc === 1 ? 'TOMORROW' :
+                                   `${daysUntilPoc} days`;
+                // Avoid duplicate notification if it already exists
+                const alreadyIncluded = urgentTaskNotifications.some(n => n.title === pocTitle);
+                if (!alreadyIncluded) {
+                    urgentTaskNotifications.push({
+                        title: pocTitle,
+                        urgency: pocUrgency,
+                        daysUntilDue: daysUntilPoc,
+                        type: 'due-soon'
+                    });
+                }
+            }
+        }
+        
+        // Update badge to reflect currently visible items in panel (if open),
+        // or computed urgent list otherwise
+        updateActionItemsBadge();
+
+        // Do not show toast notifications on page load
+    }
+    
+    // Function to show urgent task notifications
+    function showUrgentTaskNotifications(notifications) {
+        notifications.forEach((notification, index) => {
+            setTimeout(() => {
+                const icon = notification.type === 'overdue' ? '🚨' : '⚠️';
+                const message = notification.type === 'overdue' 
+                    ? `${notification.title} is ${notification.urgency}`
+                    : `${notification.title} is due ${notification.urgency.toLowerCase()}`;
+                
+                showToast(
+                    `${icon} ${notification.urgency}`,
+                    message,
+                    notification.type === 'overdue' ? 'error' : 'warning'
+                );
+            }, index * 2000); // Show notifications with 2-second intervals
+        });
+    }
 
     // Keyboard shortcuts
     document.addEventListener('keydown', function(e) {
@@ -1275,9 +1529,19 @@ document.addEventListener('DOMContentLoaded', function() {
             taskStatus.classList.remove('completed');
             taskStatus.classList.add('pending');
             
+            // Get the correct due date from the data attribute
+            const dueDate = taskCard.getAttribute('data-due-date');
+            let displayDate = 'Due Sep 30, 2025'; // Default fallback
+            
+            if (dueDate) {
+                const date = new Date(dueDate);
+                const options = { month: 'short', day: 'numeric', year: 'numeric' };
+                displayDate = `Due ${date.toLocaleDateString('en-US', options)}`;
+            }
+            
             taskStatus.innerHTML = `
                 <img src="./assets/e6da9f1fa973f15a78e1475d3fc3f7a2708c1579.svg" alt="Clock" width="16" height="16">
-                <span>Due Sep 30, 2025</span>
+                <span>${displayDate}</span>
             `;
         }
         
@@ -1285,6 +1549,17 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgressTracker(taskType);
         
         console.log(`${taskType} task marked as incomplete`);
+
+        // Update Action Items UI immediately
+        try {
+            updateActionItemsBadge();
+            const panel = document.getElementById('action-items-panel');
+            if (panel && panel.classList.contains('active')) {
+                updateActionItemsPanel();
+            }
+        } catch (e) {
+            // no-op if helpers are not defined yet
+        }
     }
 
     function setContactsEditMode() {
@@ -1631,7 +1906,14 @@ function completeSQV() {
         console.log('Calling updateProgressTracker for site-qualification-visit');
     }
     
-
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
@@ -1720,6 +2002,15 @@ function completeIM() {
         console.log('IM task card marked as complete');
         console.log('Calling updateProgressTracker for investigator-meeting');
     }
+
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
@@ -1842,6 +2133,15 @@ function markSIVTaskAsComplete() {
         console.log('SIV task card marked as complete');
         console.log('Calling updateProgressTracker for site-initiation-visit');
     }
+
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
@@ -2058,6 +2358,15 @@ function checkAllSuppliesConfirmed() {
     } else {
         console.log('Not all supplies confirmed yet');
     }
+
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
@@ -2173,6 +2482,15 @@ function checkAllTrainingConfirmed() {
     } else {
         console.log('Not all training items confirmed yet');
     }
+
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
@@ -2288,6 +2606,15 @@ function checkAllActivationConfirmed() {
     } else {
         console.log('Not all activation items confirmed yet');
     }
+
+    // Update action items immediately
+    try {
+        updateActionItemsBadge();
+        const panel = document.getElementById('action-items-panel');
+        if (panel && panel.classList.contains('active')) {
+            updateActionItemsPanel();
+        }
+    } catch (e) {}
 }
 
 /**
